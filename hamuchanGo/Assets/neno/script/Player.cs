@@ -34,7 +34,7 @@ namespace Neno.Scripts
         public int SheedNum { get; set; }
 
         /// <summary>
-        /// 
+        /// Hpが全損すると死んでしまうよ！ｗ
         /// </summary>
         public float Hp { get; set; }
 
@@ -43,7 +43,18 @@ namespace Neno.Scripts
         void Start()
         {
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
-            Hp = hpMax;
+
+            SceneManager.sceneLoaded += (scene,mode) =>
+            {
+                this.SheedNum = GameRuleManager.Instance.SheedNum;
+                this.Hp = GameRuleManager.Instance.PlayerHp;
+            };
+
+            SceneManager.sceneUnloaded += scene =>
+            {
+                GameRuleManager.Instance.SheedNum = this.SheedNum;
+                GameRuleManager.Instance.PlayerHp = this.Hp;
+            };
         }
 
         void FixedUpdate()
@@ -57,7 +68,6 @@ namespace Neno.Scripts
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(0.1f, 0, 0);
                     this.playeRigidbody.transform.right = new Vector3(1,0,0);
                     jumpVelocity += new Vector3(5, 0, 0);
-                    
                 }
                 else
                 {
@@ -75,7 +85,6 @@ namespace Neno.Scripts
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(-0.1f, 0, 0);
                     jumpVelocity += new Vector3(-5, 0, 0);
                     this.playeRigidbody.transform.right = new Vector3(-1, 0, 0);
-
                 }
                 else
                 {
@@ -136,11 +145,11 @@ namespace Neno.Scripts
 
         void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.transform.CompareTag("Ground"))
+            var layerName = LayerMask.LayerToName(col.gameObject.layer);
+            if (layerName == "GroundLayer")
             {
                 this.isGround = true;
             }
         }
-
     }
 }

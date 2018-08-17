@@ -31,6 +31,12 @@ namespace Naka
 
         void InstSprout(Collision2D collision)
         {
+
+            if (collision.GetContacts(collision.contacts) <= 0)
+            {
+                return;
+            }
+
             //接触点
             var contactPoint = collision.contacts[0].point;
             //接触点へのベクトル

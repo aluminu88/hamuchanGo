@@ -10,9 +10,10 @@ namespace Neno.Scripts
 
         [SerializeField] private int maxSheedNum = 10;
 
-
         //ハムスターから諸所値が飛んできた履
         public int SheedNum { get; set; }
+        public float PlayerHp { get; set; }
+
 
         public int MaxSheedNum
         {
