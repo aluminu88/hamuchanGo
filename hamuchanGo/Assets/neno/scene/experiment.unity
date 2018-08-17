@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheed2Create: {fileID: 0}
   SheedMaxNum: 10
-  hpInspectorSetting: 1000
+  hpMax: 1000
   DecreaseHpSpeed: 200
 --- !u!1 &1024242109
 GameObject:
