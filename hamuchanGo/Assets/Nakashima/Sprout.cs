@@ -22,6 +22,7 @@ namespace Naka
 
         float timer = 0;
         float firstLeefLocalY;
+        bool bloomed;
         void Start()
         {
             firstLeefLocalY = childLeef.localPosition.y;
@@ -41,11 +42,12 @@ namespace Naka
             {
 
             }
-            else //咲くとき
+            else if(!bloomed) //咲くとき
             {
                 var flower = Instantiate(sunFlower, transform);
                 var localPos = Vector2.up * (sproutHight + flowerHight);
                 flower.transform.localPosition = localPos;
+                bloomed = true;
             }
         }
     }

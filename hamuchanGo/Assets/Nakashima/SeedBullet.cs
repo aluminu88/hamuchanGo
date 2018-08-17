@@ -13,7 +13,6 @@ namespace Naka
         [SerializeField,Tooltip("種が床に当たった時に生成するめ")]
         GameObject sprout;
 
-        public Transform test;
         Rigidbody2D rb;
         void Start()
         {
@@ -42,7 +41,6 @@ namespace Naka
             if (135f <= Mathf.Abs(radius))//絶対値が135度以上なら床に当たっているとする
             {
                 var instSprout = Instantiate(sprout, contactPoint, Quaternion.identity);
-                print("床");
                 Destroy(gameObject);
             }
             else
@@ -57,7 +55,6 @@ namespace Naka
                 {
                     instSprout.transform.Rotate(0, 0, -WallInstAngle);
                 }
-                print("壁");
                 Destroy(gameObject);
             }
         }

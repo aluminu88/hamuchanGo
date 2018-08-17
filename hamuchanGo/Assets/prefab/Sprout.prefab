@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847194286748616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.197268, y: 0.29555082, z: 1}
+  m_LocalPosition: {x: 0, y: 0.1101, z: 0}
+  m_LocalScale: {x: 2.197268, y: 0.07538593, z: 1}
   m_Children: []
   m_Father: {fileID: 4159610702918984}
   m_RootOrder: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sproutTime: 0.5
   bloomTime: 3
-  sproutHight: 1
+  sproutHight: 1.2
   flowerHight: 3
   childLeef: {fileID: 4851713285119838}
   sunFlower: {fileID: 1019575474946942, guid: aea0ca4564c0b1547a96481b05d71d3b, type: 2}
@@ -234,11 +234,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294966783
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 140
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
