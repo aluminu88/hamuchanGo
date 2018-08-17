@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4431142344619430}
   - component: {fileID: 212516426865585682}
   - component: {fileID: 61687682236642658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: renga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
