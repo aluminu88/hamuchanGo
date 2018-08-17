@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65bae57edfe7dc4791212738da2ce4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotVelocity: 10
+  shotVelocity: 9.43
   shotAngularVelocity: 20
   sprout: {fileID: 1226535267756514, guid: 794e8022107909a4d8798c35b3dd3d67, type: 2}
   test: {fileID: 0}

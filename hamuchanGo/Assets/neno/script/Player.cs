@@ -54,7 +54,9 @@ namespace Neno.Scripts
                 if (isGround)
                 {
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(0.1f, 0, 0);
+                    this.playeRigidbody.transform.right = new Vector3(1,0,0);
                     jumpVelocity += new Vector3(5, 0, 0);
+                    
                 }
                 else
                 {
@@ -71,6 +73,8 @@ namespace Neno.Scripts
                 {
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(-0.1f, 0, 0);
                     jumpVelocity += new Vector3(-5, 0, 0);
+                    this.playeRigidbody.transform.right = new Vector3(-1, 0, 0);
+
                 }
                 else
                 {
@@ -83,7 +87,6 @@ namespace Neno.Scripts
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log(isGround);
                 if (isGround)
                 {
                     this.isGround = !this.isGround;
@@ -118,7 +121,7 @@ namespace Neno.Scripts
             }
 
             //球を発射
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 ShootSeed();
             }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4159610702918984}
   - component: {fileID: 212400329496172060}
   - component: {fileID: 114372886613380338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 61832013224608200}
   - component: {fileID: 251712890904105330}
   - component: {fileID: 50003763271220306}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
