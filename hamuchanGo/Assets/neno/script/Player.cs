@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace Neno.Scripts
@@ -113,7 +114,7 @@ namespace Neno.Scripts
                 else
                 {
                     //gameOver
-
+                    SceneManager.LoadScene("GameOver");
                 }
             }
 
