@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61217377832599020}
   - component: {fileID: 50983099590096486}
   - component: {fileID: 114927001304031624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1543195747796118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.91, y: 1.44, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   shotVelocity: 10
   shotAngularVelocity: 20
   sprout: {fileID: 1226535267756514, guid: 794e8022107909a4d8798c35b3dd3d67, type: 2}
+  test: {fileID: 0}
 --- !u!212 &212985844547856352
 SpriteRenderer:
   m_ObjectHideFlags: 1
