@@ -38,11 +38,14 @@ namespace Neno.Scripts
         /// </summary>
         public float Hp { get; set; }
 
+        private Animator animator;
 
         // Use this for initialization
         void Start()
         {
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
+
+            animator = GetComponent<Animator>();
 
             SceneManager.sceneLoaded += (scene,mode) =>
             {
@@ -105,6 +108,8 @@ namespace Neno.Scripts
                 }
                 Debug.Log("Jump!!!");
             }
+
+            animator.SetBool("jump", !isGround);
 
         }
 
