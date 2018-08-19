@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Neno.Scripts
 {
-    public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class Singleton<T> where T : new()
     {
 
         private static T instance;
@@ -15,39 +15,19 @@ namespace Neno.Scripts
             {
                 if (instance == null)
                 {
-                    Type t = typeof(T);
-
-                    instance = (T)FindObjectOfType(t);
-                    if (instance == null)
-                    {
-                        Debug.LogError(t + " をアタッチしているGameObjectはありません");
-                    }
+                    instance = new T();
                 }
 
                 return instance;
             }
         }
 
-        protected virtual void Awake()
+        /// <summary>
+        /// Instanceを新しく作り直します
+        /// </summary>
+        public void ResetInstance()
         {
-            // 他のゲームオブジェクトにアタッチされているか調べる
-            // アタッチされている場合は破棄する。
-            CheckInstance();
-        }
-
-        protected bool CheckInstance()
-        {
-            if (instance == null)
-            {
-                instance = this as T;
-                return true;
-            }
-            else if (Instance == this)
-            {
-                return true;
-            }
-            Destroy(this);
-            return false;
+            instance = new T();
         }
     }
 

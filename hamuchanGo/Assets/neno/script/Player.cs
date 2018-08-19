@@ -26,6 +26,8 @@ namespace Neno.Scripts
         /// </summary>
         [SerializeField] private int DecreaseHpSpeed = 200;
 
+        public bool isPlay { get; set; }
+
         private Rigidbody2D playeRigidbody;
         private bool isGround = false;
         /// <summary>
@@ -43,26 +45,31 @@ namespace Neno.Scripts
         // Use this for initialization
         void Start()
         {
+            isPlay = false;
+
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
 
             animator = GetComponent<Animator>();
 
             SceneManager.sceneLoaded += (scene,mode) =>
             {
-                this.SheedNum = GameRuleManager.Instance.SheedNum;
-                this.Hp = GameRuleManager.Instance.PlayerHp;
+                this.SheedNum = PlayerStatusModel.Instance.SeedNum;
+                this.Hp = PlayerStatusModel.Instance.PlayerHp;
             };
 
             SceneManager.sceneUnloaded += scene =>
             {
-                GameRuleManager.Instance.SheedNum = this.SheedNum;
-                GameRuleManager.Instance.PlayerHp = this.Hp;
+                PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+                PlayerStatusModel.Instance.PlayerHp = this.Hp;
             };
         }
 
         void FixedUpdate()
         {
-
+            if (!this.isPlay)
+            {
+                return;
+            }
             var jumpVelocity = new Vector3(0, 10, 0);
             if (Input.GetKey(KeyCode.RightArrow))
             {
