@@ -588,6 +588,10 @@ Prefab:
       propertyPath: m_Name
       value: Flower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1466108265643374, guid: 2f5177826f77bdb49aa69bed7228a0f9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f5177826f77bdb49aa69bed7228a0f9, type: 2}
   m_IsPrefabParent: 0
@@ -866,9 +870,9 @@ GameObject:
   - component: {fileID: 295019814}
   - component: {fileID: 295019813}
   - component: {fileID: 295019812}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hamu_side
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2141,6 +2145,10 @@ Prefab:
     - target: {fileID: 4758041833169342, guid: 2f5177826f77bdb49aa69bed7228a0f9, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466108265643374, guid: 2f5177826f77bdb49aa69bed7228a0f9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f5177826f77bdb49aa69bed7228a0f9, type: 2}
