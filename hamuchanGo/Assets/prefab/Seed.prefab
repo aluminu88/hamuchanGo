@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4565891032044648}
   - component: {fileID: 212985844547856352}
-  - component: {fileID: 61217377832599020}
   - component: {fileID: 50983099590096486}
   - component: {fileID: 114927001304031624}
+  - component: {fileID: 58878443397103942}
   m_Layer: 9
   m_Name: Seed
   m_TagString: Untagged
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61217377832599020
-BoxCollider2D:
+--- !u!58 &58878443397103942
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,18 +76,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2975, y: 0.6425}
-    newSize: {x: 1.19, y: 2.57}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2975, y: 0.6425}
-  m_EdgeRadius: 0
+  m_Radius: 0.25
 --- !u!114 &114927001304031624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,7 +92,6 @@ MonoBehaviour:
   shotVelocity: 9.43
   shotAngularVelocity: 20
   sprout: {fileID: 1226535267756514, guid: 794e8022107909a4d8798c35b3dd3d67, type: 2}
-  test: {fileID: 0}
 --- !u!212 &212985844547856352
 SpriteRenderer:
   m_ObjectHideFlags: 1
