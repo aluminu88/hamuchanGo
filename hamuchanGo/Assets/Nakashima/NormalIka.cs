@@ -8,8 +8,13 @@ namespace Naka {
         float moveSpeed;
         [SerializeField,Tooltip("プレイヤーに接触した時に奪う種の量")]
         int steelSeedNum;
-        [SerializeField]
+        [SerializeField,Tooltip("時機に接触した時消えるかどうか")]
+        bool hitDestroy;
+        [SerializeField, Tooltip("タネに当たった時のエフェクト")]
+        GameObject damagedEffect;
+        [SerializeField,Tooltip("ハムちゃんにダメージを与えたときのエフェクト")]
         GameObject steelParticle;
+        
 
         Transform player;
         void Start() {
@@ -29,7 +34,24 @@ namespace Naka {
                 collision.GetComponent<Neno.Scripts.Player>().SheedNum -= steelSeedNum;
                 var pos = collision.transform.position;
                 Instantiate(steelParticle, pos, Quaternion.identity);
+                if (hitDestroy)
+                {
+                    Death();
+                }
             }
+            //タグで検知のほうが良いがBulletタグを作ってなかったので
+            //これで行く
+            if (collision.GetComponent<SeedBullet>())
+            {
+                Instantiate(damagedEffect, transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+                Death();
+            }
+        }
+
+        void Death()
+        {
+            Destroy(gameObject);
         }
     }
 }

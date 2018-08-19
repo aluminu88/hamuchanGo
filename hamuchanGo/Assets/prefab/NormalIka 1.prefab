@@ -80,6 +80,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   steelSeedNum: 1
+  hitDestroy: 1
+  damagedEffect: {fileID: 1229125306480778, guid: 1ac137e9e57ed554080bd9ea76221031,
+    type: 2}
   steelParticle: {fileID: 1585687531198990, guid: 12328926e92d5ad478047069b64f0ad7,
     type: 2}
 --- !u!212 &212009878553480710
