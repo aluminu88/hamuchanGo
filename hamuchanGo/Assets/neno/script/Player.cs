@@ -175,8 +175,12 @@ namespace Neno.Scripts
 
         void ShootSeed()
         {
-            GameObject sheed = Instantiate(this.sheed2Create, this.transform.position, Quaternion.identity);
-            sheed.transform.right = transform.right;
+            if (this.SheedNum > 0)
+            {
+                this.SheedNum--;
+                GameObject sheed = Instantiate(this.sheed2Create, this.transform.position, Quaternion.identity);
+                sheed.transform.right = transform.right;
+            }
         }
 
         void OnCollisionEnter2D(Collision2D col)
