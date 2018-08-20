@@ -38,6 +38,12 @@ namespace Naka
             }
         }
 
+        public void SetSeeds(int seedNum)
+        {
+            this.seedNum = seedNum;
+            UpdateSeedSprite();
+        }
+
         public void PushSeed(int num = 1)
         {
             seedNum += num;
