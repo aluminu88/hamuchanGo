@@ -30,7 +30,7 @@ namespace Neno.Scripts
         }
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             uiAnimator = uiCanvas.GetComponent<Animator>();
             seedsStack = uiCanvas.GetComponentInChildren<SeedsStack>();

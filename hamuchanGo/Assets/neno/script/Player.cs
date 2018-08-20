@@ -177,7 +177,7 @@ namespace Neno.Scripts
 
         bool HasSheeds()
         {
-            return 0 <= this.SheedNum ? true : false;
+            return 0 < this.SheedNum ? true : false;
         }
 
         // Update is called once per frame

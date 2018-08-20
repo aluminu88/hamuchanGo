@@ -6165,6 +6165,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114900227792132544, guid: 909509fdefbb76843974ae0491761b1d,
+        type: 2}
+      propertyPath: nextScene
+      value: stage2_neno_experiment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 909509fdefbb76843974ae0491761b1d, type: 2}
   m_IsPrefabParent: 0

@@ -21,7 +21,7 @@ namespace Naka
         Sprite emptySeedSprite;
 
         Image[] uiImages;
-        void Start()
+        void Awake()
         {
             uiImages = new Image[seedMax];
             uiImages[0] = seed;
