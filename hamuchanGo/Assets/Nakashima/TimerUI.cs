@@ -29,32 +29,7 @@ namespace Naka
         public void PlayerGoal()
         {
             timerStopped = true;
-            string sceneName = SceneManager.GetActiveScene().name;
-            float oldRecord = PlayerPrefs.GetFloat(sceneName);
-            if (oldRecord == 0)
-            {
-                PlayerPrefs.SetFloat(sceneName, Timer);
-                return;
-            }
-            if(Timer <= oldRecord)
-            {
-                PlayerPrefs.SetFloat(sceneName, Timer);
-            }
-        }
-
-        [ContextMenu("PrintPrefs")]
-        void PrintPrefs()
-        {
-            string sceneName = SceneManager.GetActiveScene().name;
-            float oldRecord = PlayerPrefs.GetFloat(sceneName);
-            print(oldRecord);
-        }
-
-        [ContextMenu("ResetPrefs")]
-        void ResetPrefs()
-        {
-            string sceneName = SceneManager.GetActiveScene().name;
-            PlayerPrefs.SetFloat(sceneName, 0);
+            Neno.Scripts.ScoreManager.Instance.StageScoreList.Add(Timer);
         }
 
         void Update()
