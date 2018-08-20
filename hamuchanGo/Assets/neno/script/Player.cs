@@ -15,6 +15,8 @@ namespace Neno.Scripts
         /// </summary>
         [SerializeField] private GameObject sheed2Create;
 
+        [SerializeField] private GameObject hamu_throwing_cut;
+
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
 
@@ -167,6 +169,14 @@ namespace Neno.Scripts
             }
 
             animator.SetBool("jump", !isGround);
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                hamu_throwing_cut.SetActive(true);
+            }
+            else hamu_throwing_cut.SetActive(false);
+
+            animator.SetBool("stop", isGround && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)));
 
             //球を発射
             if (Input.GetKeyDown(KeyCode.Z))

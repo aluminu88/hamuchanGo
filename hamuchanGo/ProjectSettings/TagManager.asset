@@ -46,6 +46,12 @@ TagManager:
   - name: kanaami
     uniqueID: 3492711235
     locked: 0
+  - name: hamuface2
+    uniqueID: 4126043151
+    locked: 0
+  - name: hamuface1
+    uniqueID: 39478627
+    locked: 0
   - name: tuti
     uniqueID: 3212777715
     locked: 0
