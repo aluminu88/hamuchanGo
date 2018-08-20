@@ -31,7 +31,6 @@ namespace Neno.Scripts
             return stageScore;
         }
 
-
         public float CalcTotalScore()
         {
             float totalScore = 0;

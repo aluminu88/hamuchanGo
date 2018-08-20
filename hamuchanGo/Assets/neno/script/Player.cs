@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 namespace Neno.Scripts
@@ -32,6 +33,8 @@ namespace Neno.Scripts
 
         [SerializeField] private float JumpPower = 5;
 
+        [SerializeField] private Slider slider;
+
         public bool isPlay { get; set; }
 
         private Rigidbody2D playeRigidbody;
@@ -47,8 +50,28 @@ namespace Neno.Scripts
 
             set
             {
+                //if (seedNum < 10)
+                //{
+                //    if (10 <= seedNum + value)
+                //    {
+                //        seedNum = 10;
+                //        stageManager.ChangePlayersSeeds(seedNum);
+                //    }
+                //    else
+                //    {
+                //        seedNum += value;
+                //        stageManager.ChangePlayersSeeds(seedNum);
+                //    }
+
+                //}
+
                 seedNum = value;
+                if (10 < seedNum)
+                {
+                    seedNum = 10;
+                }
                 stageManager.ChangePlayersSeeds(seedNum);
+
             }
         }
 
@@ -64,6 +87,9 @@ namespace Neno.Scripts
         // Use this for initialization
         void Start()
         {
+            slider.maxValue = hpMax;
+            slider.minValue = 0;
+            slider.value = slider.maxValue;
             isPlay = false;
 
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -142,6 +168,11 @@ namespace Neno.Scripts
 
             animator.SetBool("jump", !isGround);
 
+            //球を発射
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                ShootSeed();
+            }
         }
 
         bool HasSheeds()
@@ -152,25 +183,25 @@ namespace Neno.Scripts
         // Update is called once per frame
         void Update()
         {
+            if (!this.isPlay)
+            {
+                return;
+            }
             this.Hp -= this.DecreaseHpSpeed * Time.deltaTime;
             if (this.Hp <= 0)
             {
                 if (HasSheeds())
                 {
                     this.Hp = this.hpMax;
+                    this.SheedNum--;
                 }
                 else
                 {
                     //gameOver
-                    SceneManager.LoadScene("GameOver");
+                    SceneManager.LoadScene("Result");
                 }
             }
-
-            //球を発射
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                ShootSeed();
-            }
+            slider.value = this.Hp;
         }
 
         void ShootSeed()
