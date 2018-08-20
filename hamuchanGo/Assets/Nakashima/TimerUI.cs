@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Naka
 {
@@ -10,17 +12,49 @@ namespace Naka
         public float Timer { private set; get; }
         public bool StartTimer { get; set; }
 
-        public void NotifyEndCountdown()
-        {
-            StartTimer = true;
-        }
-
         Text text;
+        bool timerStopped;
         void Start()
         {
             text = GetComponent<Text>();
             Timer = 0;
             StartTimer = false;
+        }
+
+        public void NotifyEndCountdown()
+        {
+            StartTimer = true;
+        }
+
+        public void PlayerGoal()
+        {
+            timerStopped = true;
+            string sceneName = SceneManager.GetActiveScene().name;
+            float oldRecord = PlayerPrefs.GetFloat(sceneName);
+            if (oldRecord == 0)
+            {
+                PlayerPrefs.SetFloat(sceneName, Timer);
+                return;
+            }
+            if(Timer <= oldRecord)
+            {
+                PlayerPrefs.SetFloat(sceneName, Timer);
+            }
+        }
+
+        [ContextMenu("PrintPrefs")]
+        void PrintPrefs()
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            float oldRecord = PlayerPrefs.GetFloat(sceneName);
+            print(oldRecord);
+        }
+
+        [ContextMenu("ResetPrefs")]
+        void ResetPrefs()
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            PlayerPrefs.SetFloat(sceneName, 0);
         }
 
         void Update()
@@ -29,6 +63,7 @@ namespace Naka
             {
                 return;
             }
+            if (timerStopped) { return; }
             Timer += Time.deltaTime;
             float tmp = Timer * 100;
             tmp= Mathf.Floor(tmp);
