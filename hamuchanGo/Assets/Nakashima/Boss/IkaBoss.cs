@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Naka
 {
@@ -18,16 +19,24 @@ namespace Naka
         GameObject normalIka;
         [SerializeField, Tooltip("ハムちゃんにダメージを与えたときのエフェクト")]
         GameObject steelParticle;
-        
+        [SerializeField]
+        Color damagedColor;
+        [SerializeField]
+        Anima2D.SpriteMeshInstance spriteMeshInstance;
+        [SerializeField]
+        Anima2D.SpriteMesh damagedMesh;
+
 
         Transform player;
         float damagedTimer = 0;
         public bool IsPlaying;
         Vector2 firstLeftHandLocalPos;
+        Anima2D.SpriteMesh normalMesh;
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
             firstLeftHandLocalPos = leftHand.localPosition;
+            normalMesh = spriteMeshInstance.spriteMesh;
         }
 
         public void LeftHandTriggerEnter(Collider2D collision)
@@ -48,13 +57,34 @@ namespace Naka
 
         public void HeadTriggerEnter(Collider2D collision)
         {
+            print("headHit");
             if (collision.tag == "Seed")
             {
                 const int Damage = 1;
                 hp -= Damage;
                 Destroy(collision.gameObject);
-                if (hp <= 0) { }
+                if (hp <= 0) { StartCoroutine(DeadCoroutine());return; }
+                StartCoroutine(DamagedCoroutine());
             }
+        }
+
+        IEnumerator DeadCoroutine()
+        {
+            spriteMeshInstance.spriteMesh = damagedMesh;
+            spriteMeshInstance.color = damagedColor;
+            IsPlaying = false;
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        IEnumerator DamagedCoroutine()
+        {
+            spriteMeshInstance.spriteMesh = damagedMesh;
+            spriteMeshInstance.color = damagedColor;
+            const float DamageMeshTime = 0.5f;
+            yield return new WaitForSeconds(DamageMeshTime);
+            spriteMeshInstance.spriteMesh = normalMesh;
+            spriteMeshInstance.color = Color.white;
         }
 
         void Update()
@@ -69,7 +99,7 @@ namespace Naka
                 vec.Normalize();
                 leftHand.right = vec;
                 leftHand.transform.Translate(-vec * handSpeed * Time.deltaTime, Space.World);
-                if(0 < leftHand.localPosition.x)//初期位置より右にはいかない
+                if(firstLeftHandLocalPos.x < leftHand.localPosition.x)//初期位置より右にはいかない
                 if (damagedTimer <= 0) { damagedTimer = 0;}
             }
             else//それ以外なら腕を進める
