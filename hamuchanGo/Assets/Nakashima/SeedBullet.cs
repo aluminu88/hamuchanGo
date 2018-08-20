@@ -6,12 +6,14 @@ namespace Naka
 {
     public class SeedBullet : MonoBehaviour
     {
-        [SerializeField,Tooltip("発射した時のスピード")]
+        [SerializeField, Tooltip("発射した時のスピード")]
         float shotVelocity;
         [SerializeField, Tooltip("発射した時の回転スピード(演出)")]
         float shotAngularVelocity;
-        [SerializeField,Tooltip("種が床に当たった時に生成するめ")]
+        [SerializeField, Tooltip("種が床に当たった時に生成するめ")]
         GameObject sprout;
+
+        [SerializeField] private GameObject seedOnDefault2Create;
 
         Rigidbody2D rb;
         void Start()
@@ -26,6 +28,11 @@ namespace Naka
             if (collision.gameObject.tag == "Ground")
             {
                 InstSprout(collision);
+            }
+            else
+            {
+                Instantiate(this.seedOnDefault2Create, this.transform.position,Quaternion.identity);
+                Destroy(gameObject);
             }
         }
 

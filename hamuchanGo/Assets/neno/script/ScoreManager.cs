@@ -16,7 +16,6 @@ namespace Neno.Scripts
             this.StageScoreList = new List<float>();
         }
 
-
         //トータルのスコア
         public float TotalScore { get; private set; }
 

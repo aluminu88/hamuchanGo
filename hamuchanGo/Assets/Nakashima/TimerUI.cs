@@ -8,16 +8,27 @@ namespace Naka
     public class TimerUI : MonoBehaviour
     {
         public float Timer { private set; get; }
+        public bool StartTimer { get; set; }
+
+        public void NotifyEndCountdown()
+        {
+            StartTimer = true;
+        }
 
         Text text;
         void Start()
         {
             text = GetComponent<Text>();
             Timer = 0;
+            StartTimer = false;
         }
 
         void Update()
         {
+            if (!StartTimer)
+            {
+                return;
+            }
             Timer += Time.deltaTime;
             float tmp = Timer * 100;
             tmp= Mathf.Floor(tmp);
