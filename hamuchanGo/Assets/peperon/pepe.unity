@@ -1571,14 +1571,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.85411
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.85093
-      objectReference: {fileID: 0}
     - target: {fileID: 1268734726465682, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
       propertyPath: m_Name
       value: renga (1)
