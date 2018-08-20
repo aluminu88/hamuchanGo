@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace Neno.Scripts
+namespace Naka
 {
     public class HowToPlayer : MonoBehaviour
     {
