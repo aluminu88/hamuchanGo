@@ -17,6 +17,6 @@ public class titlecontroller : MonoBehaviour {
 
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("stage1_neno_experiment");
     }
 }

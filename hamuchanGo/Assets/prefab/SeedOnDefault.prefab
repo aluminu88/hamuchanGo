@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212998063374622032}
   - component: {fileID: 58000061970698698}
   - component: {fileID: 114209070143996308}
+  - component: {fileID: 50451534082814734}
   m_Layer: 12
   m_Name: SeedOnDefault
   m_TagString: Seed
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50451534082814734
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018889144929744}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58000061970698698
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -68,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e477fbecaa5659a4894206d199ce4ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotVelocity: 9.43
+  shotAngularVelocity: 20
+  sprout: {fileID: 1226535267756514, guid: 794e8022107909a4d8798c35b3dd3d67, type: 2}
 --- !u!212 &212998063374622032
 SpriteRenderer:
   m_ObjectHideFlags: 1
