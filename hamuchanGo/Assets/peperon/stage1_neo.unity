@@ -682,24 +682,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4411902905272644, guid: e82e47124ba7e034582c4728f614e9dc, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4411902905272644, guid: e82e47124ba7e034582c4728f614e9dc, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61371340973317754, guid: e82e47124ba7e034582c4728f614e9dc,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61371340973317754, guid: e82e47124ba7e034582c4728f614e9dc,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1478739403950316, guid: e82e47124ba7e034582c4728f614e9dc, type: 2}
       propertyPath: m_Name
       value: tuti (26)
@@ -1851,14 +1833,6 @@ Prefab:
     - target: {fileID: 1687420593694632, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
       propertyPath: m_Name
       value: kanaami (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571480936642306, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571480936642306, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
@@ -3493,24 +3467,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61687682236642658, guid: 94705c559119a5044a07d8a3b90f5cc1,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61687682236642658, guid: 94705c559119a5044a07d8a3b90f5cc1,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1268734726465682, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
       propertyPath: m_Name
       value: renga (2)
@@ -4471,6 +4427,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1297574744}
+  - component: {fileID: 1297574746}
+  - component: {fileID: 1297574745}
   m_Layer: 0
   m_Name: ground2
   m_TagString: Untagged
@@ -4507,6 +4465,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!66 &1297574745
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297574743}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+--- !u!50 &1297574746
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297574743}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1310223146
 Prefab:
   m_ObjectHideFlags: 0
@@ -4752,24 +4750,6 @@ Prefab:
     - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431142344619430, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61687682236642658, guid: 94705c559119a5044a07d8a3b90f5cc1,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61687682236642658, guid: 94705c559119a5044a07d8a3b90f5cc1,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1268734726465682, guid: 94705c559119a5044a07d8a3b90f5cc1, type: 2}
       propertyPath: m_Name
@@ -5554,14 +5534,6 @@ Prefab:
     - target: {fileID: 1687420593694632, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
       propertyPath: m_Name
       value: kanaami (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571480936642306, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571480936642306, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e2e9c1ba93c6e64fafc691bbe040113, type: 2}
