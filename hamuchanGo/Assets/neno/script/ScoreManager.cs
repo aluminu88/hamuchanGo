@@ -43,6 +43,28 @@ namespace Neno.Scripts
 
         }
 
+        public List<float> GetSavedRecord(int stageNum)
+        {
+            var list = new List<float>();
+            for(int i = 0; i < stageNum; i++)
+            {
+                list.Add(PlayerPrefs.GetFloat(i.ToString()));
+            }
+            return list;
+        }
+
+        public void SaveRecord(List<float> newRecord)
+        {
+            for (int i = 0; i < newRecord.Count; i++)
+            {
+                var record = PlayerPrefs.GetFloat(i.ToString());
+                if (newRecord[i] < record)
+                {
+                    PlayerPrefs.SetFloat(i.ToString(),record);
+                }
+            }
+        }
+
         public void ClearAllScore()
         {
             CurrentStageScore = 0;
