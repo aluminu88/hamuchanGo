@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: kanaami
+    uniqueID: 3492711235
+    locked: 0
+  - name: tuti
+    uniqueID: 3212777715
+    locked: 0
+  - name: renga
+    uniqueID: 3620345681
+    locked: 0
