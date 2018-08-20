@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4112103507932942}
   - component: {fileID: 212009878553480710}
   - component: {fileID: 61886140685195664}
-  - component: {fileID: 50915487262613906}
-  - component: {fileID: 114505146697758060}
+  - component: {fileID: 114256291705424038}
   m_Layer: 0
   m_Name: NormalIka 1
   m_TagString: Untagged
@@ -37,32 +36,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580820196851774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.41, y: 0.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50915487262613906
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1580820196851774}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &61886140685195664
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -75,7 +54,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0074038506, y: -0.009871602}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -86,9 +65,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1335268, y: 1.1779497}
+  m_Size: {x: 1.2766666, y: 1.2766666}
   m_EdgeRadius: 0
---- !u!114 &114505146697758060
+--- !u!114 &114256291705424038
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,18 +75,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580820196851774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7b720993e9acc43864932c371319a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7626c3bd68093c942863048d461aab78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steelSeedNum: 2
-  hitDestroy: 0
-  damagedEffect: {fileID: 1779311081241968, guid: 7f29ea1f9bfd0354697a9e0c0950e3d4,
+  moveSpeed: 1
+  steelSeedNum: 1
+  hitDestroy: 1
+  damagedEffect: {fileID: 1229125306480778, guid: 1ac137e9e57ed554080bd9ea76221031,
     type: 2}
   steelParticle: {fileID: 1585687531198990, guid: 12328926e92d5ad478047069b64f0ad7,
     type: 2}
-  speed: 1
-  amplitude: 1
-  waveLength: 1
 --- !u!212 &212009878553480710
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,7 +120,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3c15c2739769739408302ae6d2ea3a3b, type: 3}
-  m_Color: {r: 0.19852942, g: 0.36987826, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

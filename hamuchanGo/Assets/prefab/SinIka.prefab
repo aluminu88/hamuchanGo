@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steelSeedNum: 2
-  hitDestroy: 0
+  hitDestroy: 1
   damagedEffect: {fileID: 1779311081241968, guid: 7f29ea1f9bfd0354697a9e0c0950e3d4,
     type: 2}
   steelParticle: {fileID: 1585687531198990, guid: 12328926e92d5ad478047069b64f0ad7,

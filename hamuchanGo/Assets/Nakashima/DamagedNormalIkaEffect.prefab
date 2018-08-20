@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50303662055155092}
   - component: {fileID: 114033221670046362}
   m_Layer: 0
-  m_Name: FamagedIkaEffect
+  m_Name: DamagedNormalIkaEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
