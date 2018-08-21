@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/\u4E2D\u5DDD/scenes/Title.unity"
+    path: Assets/ReleaseScene/Title.unity
     guid: b26eca5515c26c241be53ac17301b947
   - enabled: 1
-    path: "Assets/\u4E2D\u5DDD/scenes/HowTo.unity"
+    path: Assets/ReleaseScene/HowTo.unity
     guid: 7321ff981a98757438dfe5a35220c248
   - enabled: 1
     path: Assets/ReleaseScene/easy1.unity
@@ -36,5 +36,5 @@ EditorBuildSettings:
     path: Assets/ReleaseScene/IkaBoss.unity
     guid: 1cba43e7a2da8a14baec2d0e21d23e7e
   - enabled: 1
-    path: "Assets/\u4E2D\u5DDD/scenes/Result.unity"
+    path: Assets/ReleaseScene/Result.unity
     guid: 9ad578ce78c008743b2dbb3effa12354
