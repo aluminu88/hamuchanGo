@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Neno.Scripts;
 using UnityEngine;
 using Naka;
+using UnityEngine.UI;
 
 namespace Neno.Scripts
 {
@@ -14,6 +15,7 @@ namespace Neno.Scripts
 
         private Animator uiAnimator;
         private SeedsStack seedsStack;
+        private Slider hpSlider;
 
         public void NotifyEndCountdown()
         {
@@ -42,6 +44,11 @@ namespace Neno.Scripts
             timerUI.PlayerGoal();
         }
 
+        public void ChangeHp(float hp)
+        {
+            this.hpSlider.value = hp;
+        }
+
         public void GameOver()
         {
             RectTransform panelTransform = uiCanvas.transform.Find("Panel") as RectTransform;
@@ -54,8 +61,16 @@ namespace Neno.Scripts
         {
             uiAnimator = uiCanvas.GetComponent<Animator>();
             seedsStack = uiCanvas.GetComponentInChildren<SeedsStack>();
+            this.hpSlider = uiCanvas.GetComponentInChildren<Slider>();
             //3,2,1,start!みたいなアニメーションを作成する。
             uiAnimator.SetTrigger("StartCountDown");
+        }
+
+        void Start()
+        {
+            hpSlider.maxValue = PlayerStatusModel.Instance.PlayerMaxHp;
+            hpSlider.minValue = 0;
+            hpSlider.value = PlayerStatusModel.Instance.PlayerHp;
         }
 
         // Update is called once per frame
