@@ -112,47 +112,55 @@ namespace Neno.Scripts
             //};
         }
 
-        void FixedUpdate()
-        {
-#if UNITY_IOS
+        /// <summary>
+        /// iosとandroidの両方に対応している操作に関する関数。
+        /// </summary>
+        void MobileControl(){
             if (!this.isPlay)
             {
                 return;
             }
 
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            //horizontal = horizontal < 0 ? -0.1f : 0.1f;
-            //if(){
-            //   
-            //}
-            horizontal /= 10;
-            Debug.Log(horizontal);
-            float jumpVelocityHorizontal = horizontal * 5;
 
+            var jumpVelocity = new Vector3(0, JumpPower, 0);
+            if (0.1f < Mathf.Abs(horizontal))
+            {
+                horizontal /= 10;
+                float jumpVelocityHorizontal = horizontal * 5;
 
-            var jumpVelocity = new Vector3(jumpVelocityHorizontal, JumpPower, 0);
+                jumpVelocity.x = jumpVelocityHorizontal;
 
-            Vector3 addPos = new Vector3(horizontal, 0f, 0f);
+                Vector3 addPos = new Vector3(horizontal, 0f, 0f);
 
-            if(isGround){
-                this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(horizontal, 0, 0);
-                this.playeRigidbody.transform.right = new Vector3(horizontal, 0, 0);
+                if (isGround)
+                {
+                    this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(horizontal, 0, 0);
 
-            }else{
-                if(0 < horizontal){
-                    if (playeRigidbody.velocity.x < 10)
+                    this.playeRigidbody.transform.right = new Vector3(horizontal, 0, 0);
+                }
+                else
+                {
+                    if (0 < horizontal)
                     {
-                        this.playeRigidbody.velocity += new Vector2(0.2f, 0);
+                        if (playeRigidbody.velocity.x < 10)
+                        {
+                            this.playeRigidbody.velocity += new Vector2(0.2f, 0);
+                        }
                     }
-                }else if(0 > horizontal){
-                    if (-10 < playeRigidbody.velocity.x)
+                    else if (0 > horizontal)
                     {
-                        this.playeRigidbody.velocity += new Vector2(-0.2f, 0);
+                        if (-10 < playeRigidbody.velocity.x)
+                        {
+                            this.playeRigidbody.velocity += new Vector2(-0.2f, 0);
+                        }
                     }
                 }
             }
 
-            if(CrossPlatformInputManager.GetButtonDown("Jump")){
+
+            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            {
                 if (isGround)
                 {
                     this.isGround = !this.isGround;
@@ -170,6 +178,14 @@ namespace Neno.Scripts
                 ShootSeed();
             }
 
+        }
+
+        void FixedUpdate()
+        {
+#if UNITY_IOS
+            MobileControl();
+#elif UNITY_ANDROID
+            MobileControl();
 #else
 
             if (!this.isPlay)
