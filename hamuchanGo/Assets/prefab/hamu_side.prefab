@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114714174910297536}
   - component: {fileID: 50560040786169460}
   - component: {fileID: 61206024683549592}
+  - component: {fileID: 82720537040915842}
   m_Layer: 10
   m_Name: hamu_side
   m_TagString: Player
@@ -119,6 +120,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3, y: 3.7301083}
   m_EdgeRadius: 0
+--- !u!82 &82720537040915842
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560544000510488}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95444985702179966
 Animator:
   serializedVersion: 3
@@ -150,6 +231,10 @@ MonoBehaviour:
   sheed2Create: {fileID: 1543195747796118, guid: a1f2df427e46ca4488f1e6f7508a3168,
     type: 2}
   hamu_throwing_cut: {fileID: 1143034551662696}
+  jumpSE: {fileID: 8300000, guid: 4fc018a970d3e554fb40b4551b25c675, type: 3}
+  seedthrowSE: {fileID: 8300000, guid: 1626d2d7c8bb39c46a0c197939550986, type: 3}
+  seedgetSE: {fileID: 8300000, guid: 082aa8bbd922e7e4c94ae397355dbf52, type: 3}
+  EatingSE: {fileID: 8300000, guid: a812f7113635e534a8875fbbcc9638a5, type: 3}
   stageManager: {fileID: 0}
   hpMax: 1000
   DecreaseHpSpeed: 200
@@ -168,6 +253,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 70
     maxNormalAngle: 110
+  jumpEffect: {fileID: 1719503752798546, guid: e3b80a0621352434cac855fad26a6e20, type: 2}
 --- !u!212 &212311943457793016
 SpriteRenderer:
   m_ObjectHideFlags: 1

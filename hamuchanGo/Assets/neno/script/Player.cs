@@ -46,6 +46,8 @@ namespace Neno.Scripts
 
         [SerializeField] ContactFilter2D filter2d;
 
+        [SerializeField] private GameObject jumpEffect;
+
         public bool isPlay { get; set; }
 
         private Rigidbody2D playeRigidbody;
@@ -157,6 +159,7 @@ namespace Neno.Scripts
                 if (isTouched)
                 {
                     this.isGround = !this.isGround;
+                    Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
                     GetComponent<AudioSource>().PlayOneShot(jumpSE);
                 }

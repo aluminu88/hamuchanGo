@@ -15,7 +15,20 @@ namespace Naka
         /// </summary>
         [SerializeField] private GameObject sheed2Create;
 
+        [SerializeField]
+        private GameObject hamu_throwing_cut;
 
+        [SerializeField]
+        private AudioClip jumpSE;
+
+        [SerializeField]
+        private AudioClip seedthrowSE;
+
+        [SerializeField]
+        private AudioClip seedgetSE;
+
+        [SerializeField]
+        private AudioClip EatingSE;
         /// <summary>
         /// ハムちゃんのスタミナ
         /// </summary>
@@ -27,6 +40,8 @@ namespace Naka
         [SerializeField] private int DecreaseHpSpeed = 200;
 
         [SerializeField] private float JumpPower = 5;
+
+        [SerializeField] private GameObject jumpEffect;
 
         public bool isPlay { get; set; }
 
@@ -117,13 +132,22 @@ namespace Naka
                 if (isGround)
                 {
                     this.isGround = !this.isGround;
-
+                    Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
+                    GetComponent<AudioSource>().PlayOneShot(jumpSE);
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
                 }
                 Debug.Log("Jump!!!");
             }
 
             animator.SetBool("jump", !isGround);
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                hamu_throwing_cut.SetActive(true);
+            }
+            else hamu_throwing_cut.SetActive(false);
+
+            animator.SetBool("stop", isGround && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)));
 
             //球を発射
             if (Input.GetKeyDown(KeyCode.Z))
@@ -151,6 +175,7 @@ namespace Naka
         void ShootSeed()
         {
             if(Seedmax <= seedCount) { return; }
+            GetComponent<AudioSource>().PlayOneShot(seedthrowSE);
             seedCount++;
             GameObject sheed = Instantiate(this.sheed2Create, this.transform.position, Quaternion.identity);
             sheed.transform.right = transform.right;
@@ -168,6 +193,7 @@ namespace Naka
             {
                 if (this.SheedNum < 10)
                 {
+                    GetComponent<AudioSource>().PlayOneShot(seedgetSE);
                     this.SheedNum += 1;
                     Destroy(col.transform.gameObject);
                 }
