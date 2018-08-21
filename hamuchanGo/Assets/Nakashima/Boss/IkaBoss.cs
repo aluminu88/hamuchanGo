@@ -80,11 +80,12 @@ namespace Naka
         IEnumerator DamagedCoroutine()
         {
             spriteMeshInstance.spriteMesh = damagedMesh;
+            Color firstColor = spriteMeshInstance.color;
             spriteMeshInstance.color = damagedColor;
             const float DamageMeshTime = 0.5f;
             yield return new WaitForSeconds(DamageMeshTime);
             spriteMeshInstance.spriteMesh = normalMesh;
-            spriteMeshInstance.color = Color.white;
+            spriteMeshInstance.color = firstColor;
         }
 
         void Update()
