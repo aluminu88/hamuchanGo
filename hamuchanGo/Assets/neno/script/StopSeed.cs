@@ -13,6 +13,10 @@ public class StopSeed : MonoBehaviour
     [SerializeField, Tooltip("種が床に当たった時に生成するめ")]
     GameObject sprout;
 
+    [SerializeField, Tooltip("種が芽が出ない床に当たった時の音")]
+    private AudioClip dropSE;
+
+
     // Use this for initialization
     void Start()
     {
@@ -30,7 +34,7 @@ public class StopSeed : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             InstSprout(collision);
-        }
+        }//else GetComponent<AudioSource>().PlayOneShot(dropSE);
     }
 
     void InstSprout(Collision2D collision)
