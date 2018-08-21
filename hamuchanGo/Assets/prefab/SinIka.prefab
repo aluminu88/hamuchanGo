@@ -108,6 +108,8 @@ MonoBehaviour:
   speed: 1
   amplitude: 1
   waveLength: 0.5
+  Ika_deadSE: {fileID: 8300000, guid: f1ed82888c6f27c4db76c567e2b63a69, type: 3}
+  power: 8
 --- !u!212 &212734710840096580
 SpriteRenderer:
   m_ObjectHideFlags: 1

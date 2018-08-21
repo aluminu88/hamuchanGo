@@ -21,6 +21,12 @@ namespace Naka
         [SerializeField, Tooltip("波長")]
         float waveLength = 1;
 
+        [SerializeField, Tooltip("ダメージ受けた時の音")]
+        private AudioClip Ika_deadSE;
+
+        [SerializeField, Tooltip("ハムちゃんをふっとばすパワー")]
+        private float power = 8;
+
         Rigidbody2D rb;
         Vector2 firstPosition;
         float timer = 0;
@@ -50,6 +56,7 @@ namespace Naka
         {
             if (collision.tag == "Player")
             {
+                collision.GetComponent<Neno.Scripts.Player>().damade(power, this.transform);
                 collision.GetComponent<Neno.Scripts.Player>().SheedNum -= steelSeedNum;
                 var pos = collision.transform.position;
                 Instantiate(steelParticle, pos, Quaternion.identity);
@@ -62,6 +69,8 @@ namespace Naka
             //これで行く
             if (collision.GetComponent<SeedBullet>())
             {
+                var audio = GameObject.FindGameObjectWithTag("Player");
+                audio.GetComponent<AudioSource>().PlayOneShot(Ika_deadSE);
                 Instantiate(damagedEffect, transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
                 Death();

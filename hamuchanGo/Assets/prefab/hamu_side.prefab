@@ -235,6 +235,7 @@ MonoBehaviour:
   seedthrowSE: {fileID: 8300000, guid: 1626d2d7c8bb39c46a0c197939550986, type: 3}
   seedgetSE: {fileID: 8300000, guid: 082aa8bbd922e7e4c94ae397355dbf52, type: 3}
   EatingSE: {fileID: 8300000, guid: a812f7113635e534a8875fbbcc9638a5, type: 3}
+  DamagedSE: {fileID: 8300000, guid: 754fab2360751544d91454015d16b6f2, type: 3}
   stageManager: {fileID: 0}
   hpMax: 1000
   DecreaseHpSpeed: 200

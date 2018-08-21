@@ -26,6 +26,8 @@ namespace Neno.Scripts
 
         [SerializeField] private AudioClip EatingSE;
 
+        [SerializeField] private AudioClip DamagedSE;
+
 
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
@@ -337,5 +339,14 @@ namespace Neno.Scripts
                 }
             }
         }
+
+        public void damade(float damagepower,Transform enemytransform)
+        {
+            animator.SetTrigger("damaged");
+            GetComponent<AudioSource>().PlayOneShot(DamagedSE);
+            var damagevector = (this.transform.position - enemytransform.position).normalized;
+            this.playeRigidbody.AddForce(damagevector * damagepower, ForceMode2D.Impulse);
+        }
+
     }
 }
