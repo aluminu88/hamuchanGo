@@ -15,6 +15,7 @@ namespace Neno.Scripts
         /// </summary>
         [SerializeField] private GameObject sheed2Create;
 
+        //c#でスネークケースはだめぇぇ
         [SerializeField] private GameObject hamu_throwing_cut;
 
         [SerializeField] private AudioClip jumpSE;
@@ -115,7 +116,8 @@ namespace Neno.Scripts
         /// <summary>
         /// iosとandroidの両方に対応している操作に関する関数。
         /// </summary>
-        void MobileControl(){
+        void MobileControl()
+        {
             if (!this.isPlay)
             {
                 return;
@@ -124,6 +126,9 @@ namespace Neno.Scripts
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
 
             var jumpVelocity = new Vector3(0, JumpPower, 0);
+            var isTouched = this.playeRigidbody.IsTouching(filter2d);
+
+            //ジョイスティックの入力が小さすぎたら無視
             if (0.1f < Mathf.Abs(horizontal))
             {
                 horizontal /= 10;
@@ -156,26 +161,33 @@ namespace Neno.Scripts
                         }
                     }
                 }
+            }else{
+                animator.SetBool("stop", isTouched);
             }
 
 
             if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
-                if (isGround)
+                if (isTouched)
                 {
                     this.isGround = !this.isGround;
-
+                    Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                    GetComponent<AudioSource>().PlayOneShot(jumpSE);
                 }
             }
 
 
-            animator.SetBool("jump", !isGround);
+            animator.SetBool("jump", !isTouched);
 
             //球を発射
             if (CrossPlatformInputManager.GetButtonDown("Attack"))
             {
                 ShootSeed();
+                hamu_throwing_cut.SetActive(true);
+            }
+            else{
+                hamu_throwing_cut.SetActive(false);
             }
 
         }
@@ -258,7 +270,7 @@ namespace Neno.Scripts
                 ShootSeed();
             }
 #endif
-        }
+        }//fixedUpdate
 
         bool HasSheeds()
         {
