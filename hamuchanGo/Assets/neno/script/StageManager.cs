@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Neno.Scripts;
 using UnityEngine;
+using Naka;
 
 namespace Neno.Scripts
 {
@@ -9,16 +10,30 @@ namespace Neno.Scripts
     {
 
         [SerializeField] private Player player;
-        [SerializeField] private Animator uiAnimator;
+        [SerializeField] private Canvas uiCanvas;
+
+        private Animator uiAnimator;
+        private SeedsStack seedsStack;
 
         public void NotifyEndCountdown()
         {
             this.player.isPlay = true;
+            //uiCanvasのTimerを取得してタイマーをスタートする。
+            TimerUI timerUi = uiCanvas.GetComponentInChildren<TimerUI>();
+            timerUi.NotifyEndCountdown();
+        }
+
+
+        public void ChangePlayersSeeds(int seedsNum)
+        {
+            seedsStack.SetSeeds(seedsNum);
         }
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
+            uiAnimator = uiCanvas.GetComponent<Animator>();
+            seedsStack = uiCanvas.GetComponentInChildren<SeedsStack>();
             //3,2,1,start!みたいなアニメーションを作成する。
             uiAnimator.SetTrigger("StartCountDown");
         }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Seed
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Bullet
   - Player
   - Sprout
-  - 
+  - Seed
   - 
   - 
   - 
@@ -41,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: kanaami
+    uniqueID: 3492711235
+    locked: 0
+  - name: hamuface2
+    uniqueID: 4126043151
+    locked: 0
+  - name: hamuface1
+    uniqueID: 39478627
+    locked: 0
+  - name: tuti
+    uniqueID: 3212777715
+    locked: 0
+  - name: renga
+    uniqueID: 3620345681
+    locked: 0
+  - name: cloud
+    uniqueID: 2380530905
     locked: 0

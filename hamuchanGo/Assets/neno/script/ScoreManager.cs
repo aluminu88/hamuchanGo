@@ -16,7 +16,6 @@ namespace Neno.Scripts
             this.StageScoreList = new List<float>();
         }
 
-
         //トータルのスコア
         public float TotalScore { get; private set; }
 
@@ -32,7 +31,6 @@ namespace Neno.Scripts
             return stageScore;
         }
 
-
         public float CalcTotalScore()
         {
             float totalScore = 0;
@@ -43,6 +41,28 @@ namespace Neno.Scripts
         public void ClearStageScore()
         {
 
+        }
+
+        public List<float> GetSavedRecord(int stageNum)
+        {
+            var list = new List<float>();
+            for(int i = 0; i < stageNum; i++)
+            {
+                list.Add(PlayerPrefs.GetFloat(i.ToString()));
+            }
+            return list;
+        }
+
+        public void SaveRecord(List<float> newRecord)
+        {
+            for (int i = 0; i < newRecord.Count; i++)
+            {
+                var record = PlayerPrefs.GetFloat(i.ToString());
+                if (newRecord[i] < record)
+                {
+                    PlayerPrefs.SetFloat(i.ToString(),record);
+                }
+            }
         }
 
         public void ClearAllScore()

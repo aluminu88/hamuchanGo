@@ -6,9 +6,9 @@ public class Goal : MonoBehaviour
 {
 
     [SerializeField] private Animator uiAnimator;
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private Naka.TimerUI timerUI;
+    void Start () {
 		
 	}
 	
@@ -23,7 +23,7 @@ public class Goal : MonoBehaviour
         {
             //ゴール！
             uiAnimator.SetTrigger("StageClear");
-
+            timerUI.PlayerGoal();
         }
     }
 }

@@ -15,5 +15,8 @@ EditorBuildSettings:
     path: "Assets/\u4E2D\u5DDD/scenes/Result.unity"
     guid: 9ad578ce78c008743b2dbb3effa12354
   - enabled: 1
-    path: "Assets/\u4E2D\u5DDD/scenes/HowTo.unity"
-    guid: 7321ff981a98757438dfe5a35220c248
+    path: Assets/neno/scene/stage1_neno_experiment.unity
+    guid: 335cf2ad3ca2c484589f0ecc8ad2d027
+  - enabled: 1
+    path: Assets/neno/scene/stage2_neno_experiment.unity
+    guid: 74b73ab8e9aa51d45999123ce93c752b

@@ -21,7 +21,7 @@ namespace Naka
         Sprite emptySeedSprite;
 
         Image[] uiImages;
-        void Start()
+        void Awake()
         {
             uiImages = new Image[seedMax];
             uiImages[0] = seed;
@@ -36,6 +36,12 @@ namespace Naka
             {
                 uiImages[i].sprite = filledSeedSprite;
             }
+        }
+
+        public void SetSeeds(int seedNum)
+        {
+            this.seedNum = seedNum;
+            UpdateSeedSprite();
         }
 
         public void PushSeed(int num = 1)

@@ -14,7 +14,7 @@ namespace Neno.Scripts
         {
             //初期値！
             MaxSeedNum = 10;
-            SeedNum = 5;
+            SeedNum = 6;
             PlayerHp = 1000;
         }
 
