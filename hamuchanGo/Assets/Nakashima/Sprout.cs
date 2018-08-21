@@ -17,6 +17,10 @@ namespace Naka
         float flowerHight;
         [SerializeField, Tooltip("一個下の階層のLeefをアタッチする")]
         Transform childLeef;//足場の部分
+
+        [SerializeField, Tooltip("芽が出る音")]
+        private AudioClip sproutSE;
+
         [SerializeField]
         //GameObject sunFlower;
 
@@ -26,6 +30,11 @@ namespace Naka
         void Start()
         {
             firstLeefLocalY = childLeef.localPosition.y;
+        }
+
+        void Awake()
+        {
+            GetComponent<AudioSource>().PlayOneShot(sproutSE);
         }
 
         void Update()

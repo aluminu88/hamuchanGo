@@ -17,6 +17,15 @@ namespace Neno.Scripts
 
         [SerializeField] private GameObject hamu_throwing_cut;
 
+        [SerializeField] private AudioClip jumpSE;
+
+        [SerializeField] private AudioClip seedthrowSE;
+
+        [SerializeField] private AudioClip seedgetSE;
+
+        [SerializeField] private AudioClip EatingSE;
+
+
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
 
@@ -149,6 +158,7 @@ namespace Neno.Scripts
                 {
                     this.isGround = !this.isGround;
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                    GetComponent<AudioSource>().PlayOneShot(jumpSE);
                 }
             }
 
@@ -189,6 +199,7 @@ namespace Neno.Scripts
                 if (HasSheeds())
                 {
                     this.Hp = this.hpMax;
+                    GetComponent<AudioSource>().PlayOneShot(EatingSE);
                     this.SheedNum--;
                 }
                 else
@@ -210,6 +221,7 @@ namespace Neno.Scripts
         {
             if (this.SheedNum > 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(seedthrowSE);
                 this.SheedNum--;
                 GameObject sheed = Instantiate(this.sheed2Create, this.transform.position, Quaternion.identity);
                 sheed.transform.right = transform.right;
@@ -228,6 +240,7 @@ namespace Neno.Scripts
             {
                 if (this.SheedNum < 10)
                 {
+                    GetComponent<AudioSource>().PlayOneShot(seedgetSE);
                     this.SheedNum += 1;
                     Destroy(col.transform.gameObject);
                 }
