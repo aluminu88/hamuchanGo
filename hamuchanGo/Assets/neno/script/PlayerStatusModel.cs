@@ -9,6 +9,7 @@ namespace Neno.Scripts
         public int SeedNum { get; set; }
         public int MaxSeedNum { get; private set; }
         public float PlayerHp { get; set; }
+        public float PlayerMaxHp { get; set; }
 
         public PlayerStatusModel()
         {
@@ -23,12 +24,17 @@ namespace Neno.Scripts
             this.MaxSeedNum = maxNum;
         }
 
+        public void SetMaxHp(float maxHp)
+        {
+            this.PlayerMaxHp = maxHp;
+        }
+
         public void StatusInit()
         {
             //初期値！
             MaxSeedNum = 10;
             SeedNum = 6;
-            PlayerHp = 1000;
+            PlayerHp = this.PlayerMaxHp;
         }
     }
 }
