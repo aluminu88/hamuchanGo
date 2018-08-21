@@ -11,9 +11,13 @@ namespace Naka
         [SerializeField]
         Sprite seedGotSprite;
         bool seedWasGot;//タネを取得した後か
+
+        [SerializeField]
+        private AudioClip bloomingSE;
+
         void Start()
         {
-
+            GetComponent<AudioSource>().PlayOneShot(bloomingSE);
         }
 
         void OnTriggerEnter2D(Collider2D collision)

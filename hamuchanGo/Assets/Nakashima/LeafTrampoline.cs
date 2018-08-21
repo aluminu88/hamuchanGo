@@ -10,6 +10,9 @@ namespace Naka
         [SerializeField]
         float bounciness = 1;
 
+        [SerializeField]
+        private AudioClip TrampolineSE;
+
         void Start()
         {
 
@@ -21,6 +24,7 @@ namespace Naka
             {
                 Vector2 impluse = transform.up * bounciness;
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = impluse;
+                GetComponent<AudioSource>().PlayOneShot(TrampolineSE);
             }
         }
     }
