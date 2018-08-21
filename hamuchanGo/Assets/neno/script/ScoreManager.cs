@@ -40,7 +40,7 @@ namespace Neno.Scripts
 
         public void ClearStageScore()
         {
-
+            StageScoreList = new List<float>();
         }
 
         public List<float> GetSavedRecord(int stageNum)
@@ -63,6 +63,11 @@ namespace Neno.Scripts
                     PlayerPrefs.SetFloat(i.ToString(),newRecord[i]);
                 }
             }
+        }
+
+        public void ResetStageScore()
+        {
+
         }
 
         public void ReSetPrefas()

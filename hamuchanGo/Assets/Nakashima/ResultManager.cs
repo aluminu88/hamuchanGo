@@ -32,7 +32,8 @@ namespace Naka
                 text[0].text = GetRoundupFloat(currenRecord[i]);
                 text[1].text = GetRoundupFloat(savedRecord[i]);
             }
-
+            ScoreManager.Instance.SaveRecord(currenRecord);
+            ScoreManager.Instance.ClearStageScore();
         }
 
         string GetRoundupFloat(float num)
