@@ -22,5 +22,13 @@ namespace Neno.Scripts
         {
             this.MaxSeedNum = maxNum;
         }
+
+        public void StatusInit()
+        {
+            //初期値！
+            MaxSeedNum = 10;
+            SeedNum = 6;
+            PlayerHp = 1000;
+        }
     }
 }
