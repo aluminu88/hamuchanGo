@@ -21,6 +21,11 @@ namespace Neno.Scripts
             SceneManager.LoadScene(this.tile);
         }
 
+        public void GotoResultScene()
+        {
+            SceneManager.LoadScene("Result");
+        }
+
         // Use this for initialization
         void Start()
         {
