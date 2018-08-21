@@ -35,8 +35,6 @@ namespace Neno.Scripts
 
         [SerializeField] private float JumpPower = 5;
 
-        [SerializeField] private Slider slider;
-
         [SerializeField] ContactFilter2D filter2d;
 
         public bool isPlay { get; set; }
@@ -74,11 +72,9 @@ namespace Neno.Scripts
         private Animator animator;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
-            slider.maxValue = hpMax;
-            slider.minValue = 0;
-            slider.value = slider.maxValue;
+
             isPlay = false;
 
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -88,6 +84,7 @@ namespace Neno.Scripts
             this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             this.Hp = PlayerStatusModel.Instance.PlayerHp;
             this.maxSeedNum = PlayerStatusModel.Instance.MaxSeedNum;
+            PlayerStatusModel.Instance.PlayerMaxHp = this.hpMax;
 
             //SceneManager.sceneLoaded += (scene, mode) =>
             //{
@@ -200,7 +197,7 @@ namespace Neno.Scripts
                     stageManager.GameOver();
                 }
             }
-            slider.value = this.Hp;
+            stageManager.ChangeHp(this.Hp);
         }
 
         public void SavePlayerStatus()
