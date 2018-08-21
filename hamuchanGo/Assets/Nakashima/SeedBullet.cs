@@ -15,6 +15,7 @@ namespace Naka
 
         [SerializeField] private GameObject seedOnDefault2Create;
 
+        bool dead;
         Rigidbody2D rb;
         void Start()
         {
@@ -25,6 +26,7 @@ namespace Naka
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (dead) { return; }
             if (collision.gameObject.tag == "Ground")
             {
                 InstSprout(collision);
@@ -33,6 +35,7 @@ namespace Naka
             {
                 Instantiate(this.seedOnDefault2Create, this.transform.position,Quaternion.identity);
                 Destroy(gameObject);
+                dead = true;
             }
         }
 
@@ -68,8 +71,9 @@ namespace Naka
                 {
                     instSprout.transform.Rotate(0, 0, -WallInstAngle);
                 }
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
+            dead = true;
         }
     }
 }

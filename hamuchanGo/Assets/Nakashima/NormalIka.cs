@@ -41,6 +41,7 @@ namespace Naka {
             }
             //タグで検知のほうが良いがBulletタグを作ってなかったので
             //これで行く
+            //と思ったけどSeedが作られた，しかし，変えると不安なのでこのまま
             if (collision.GetComponent<SeedBullet>())
             {
                 Instantiate(damagedEffect, transform.position, Quaternion.identity);

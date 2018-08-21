@@ -14,8 +14,6 @@ public class JumpIka : MonoBehaviour {
 
     [SerializeField, Tooltip("ジャンプサイクル")]
     float cycleTime = 1;
-    [SerializeField, Tooltip("ジャンプのタイミングではねる確率")]
-    float jumpProbability = 0.5f;
     [SerializeField, Tooltip("ジャンプする角度")]
     float jumpRange = 90f;
     [SerializeField, Tooltip("ジャンプ力")]
@@ -23,8 +21,11 @@ public class JumpIka : MonoBehaviour {
 
     float timer = 0f;
     Rigidbody2D rb;
+    Vector2 firstPos;
+
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        firstPos = transform.position;
 	}
 	
 	void Update () {
@@ -38,19 +39,44 @@ public class JumpIka : MonoBehaviour {
 
     void Jump()
     {
-        print("jump");
-        float rand = Random.Range(0f, 1f);
-        if ( rand <= jumpProbability)
+        if (firstPos.y <= transform.position.y) { return; }
+        float minAngle;
+        float maxAngle;
+        minAngle = 90f - jumpRange / 2;
+        maxAngle = 90f + jumpRange / 2;
+        float randomAngle = Random.Range(minAngle, maxAngle);
+        Vector2 jumpVector = new Vector2();
+        jumpVector.x= Mathf.Cos(randomAngle * Mathf.Deg2Rad);
+        jumpVector.y= Mathf.Sin(randomAngle * Mathf.Deg2Rad);
+        jumpVector.Normalize();
+        rb.velocity = Vector2.zero;
+        rb.AddForce(jumpImpulse * jumpVector,ForceMode2D.Impulse);
+
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
-            float minAngle = 90f - jumpRange / 2;
-            float maxAngle = 90f + jumpRange / 2;
-            float randomAngle = Random.Range(minAngle, maxAngle);
-            Vector2 jumpVector = new Vector2();
-            jumpVector.x= Mathf.Cos(randomAngle * Mathf.Deg2Rad);
-            jumpVector.y= Mathf.Sin(randomAngle * Mathf.Deg2Rad);
-            jumpVector.Normalize();
-            rb.velocity = Vector2.zero;
-            rb.AddForce(jumpImpulse * jumpVector,ForceMode2D.Impulse);
+            collision.GetComponent<Neno.Scripts.Player>().SheedNum -= steelSeedNum;
+            var pos = collision.transform.position;
+            Instantiate(steelParticle, pos, Quaternion.identity);
+            if (hitDestroy)
+            {
+                Death();
+            }
         }
+        //タグで検知のほうが良いがBulletタグを作ってなかったので
+        //これで行く
+        if (collision.GetComponent<Naka.SeedBullet>())
+        {
+            Instantiate(damagedEffect, transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
 }
