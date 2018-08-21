@@ -32,6 +32,7 @@ namespace Neno.Scripts
         public void ClearStage()
         {
             this.player.isPlay = false;
+            this.player.SavePlayerStatus();
 
         }
 
