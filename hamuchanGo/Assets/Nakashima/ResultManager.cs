@@ -12,6 +12,8 @@ namespace Naka
         GameObject node;
         [SerializeField]
         bool test;
+        [SerializeField]
+        Sprite[] sprits;
 
         List<GameObject> nodelist = new List<GameObject>();
         void Start()
@@ -31,6 +33,8 @@ namespace Naka
                 var text = nodelist[i].GetComponentsInChildren<Text>();
                 text[0].text = GetRoundupFloat(currenRecord[i]);
                 text[1].text = GetRoundupFloat(savedRecord[i]);
+                var image = nodelist[i].transform.Find("Image");
+                image.GetComponent<Image>().sprite = sprits[i];
             }
             ScoreManager.Instance.SaveRecord(currenRecord);
             ScoreManager.Instance.ClearStageScore();
