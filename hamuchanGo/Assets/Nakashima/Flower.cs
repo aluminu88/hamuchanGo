@@ -8,7 +8,8 @@ namespace Naka
     {
         [SerializeField,Tooltip("触れたときに増えるタネの数")]
         int addSeedNum;
-
+        [SerializeField]
+        Sprite seedGotSprite;
         bool seedWasGot;//タネを取得した後か
         void Start()
         {
@@ -20,6 +21,7 @@ namespace Naka
             if (collision.tag == "Player" && !seedWasGot)
             {
                 print("FlowerHit");
+                GetComponent<SpriteRenderer>().sprite = seedGotSprite;
                 var player = collision.GetComponent<Neno.Scripts.Player>();
                 if (!player)//一応チェック
                 {

@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addSeedNum: 5
+  seedGotSprite: {fileID: 21300000, guid: 445552dd73f3cad40a9b6485efb41a61, type: 3}
 --- !u!114 &114662455510647206
 MonoBehaviour:
   m_ObjectHideFlags: 1
