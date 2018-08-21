@@ -6,15 +6,20 @@ namespace Naka {
     public class NormalIka : MonoBehaviour {
         [SerializeField]
         float moveSpeed;
-        [SerializeField,Tooltip("プレイヤーに接触した時に奪う種の量")]
+        [SerializeField, Tooltip("プレイヤーに接触した時に奪う種の量")]
         int steelSeedNum;
-        [SerializeField,Tooltip("時機に接触した時消えるかどうか")]
+        [SerializeField, Tooltip("時機に接触した時消えるかどうか")]
         bool hitDestroy;
         [SerializeField, Tooltip("タネに当たった時のエフェクト")]
         GameObject damagedEffect;
-        [SerializeField,Tooltip("ハムちゃんにダメージを与えたときのエフェクト")]
+        [SerializeField, Tooltip("ハムちゃんにダメージを与えたときのエフェクト")]
         GameObject steelParticle;
-        
+
+        [SerializeField, Tooltip("ダメージ受けた時の音")]
+        private AudioClip Ika_deadSE;
+
+        [SerializeField, Tooltip("ハムちゃんをふっとばすパワー")]
+        private float power = 0; 
 
         Transform player;
         void Start() {
@@ -31,6 +36,7 @@ namespace Naka {
         {
             if (collision.tag == "Player")
             {
+                collision.GetComponent<Neno.Scripts.Player>().damade(power,this.transform);
                 collision.GetComponent<Neno.Scripts.Player>().SheedNum -= steelSeedNum;
                 var pos = collision.transform.position;
                 Instantiate(steelParticle, pos, Quaternion.identity);
@@ -44,6 +50,7 @@ namespace Naka {
             //と思ったけどSeedが作られた，しかし，変えると不安なのでこのまま
             if (collision.GetComponent<SeedBullet>())
             {
+                player.GetComponent<AudioSource>().PlayOneShot(Ika_deadSE);
                 Instantiate(damagedEffect, transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
                 Death();
