@@ -101,19 +101,19 @@ namespace Neno.Scripts
             this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             this.Hp = PlayerStatusModel.Instance.PlayerHp;
             this.maxSeedNum = PlayerStatusModel.Instance.MaxSeedNum;
-            
+
             //SceneManager.sceneLoaded += (scene, mode) =>
             //{
             //    this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             //    this.Hp = PlayerStatusModel.Instance.PlayerHp;
-            //    this.maxSeedNum = 
+            //    this.maxSeedNum =
             //};
 
-            SceneManager.sceneUnloaded += scene =>
-            {
-                PlayerStatusModel.Instance.SeedNum = this.SheedNum;
-                PlayerStatusModel.Instance.PlayerHp = this.Hp;
-            };
+            //SceneManager.sceneUnloaded += scene =>
+            //{
+            //    PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            //    PlayerStatusModel.Instance.PlayerHp = this.Hp;
+            //};
         }
         
         void FixedUpdate()
@@ -212,6 +212,12 @@ namespace Neno.Scripts
                 }
             }
             slider.value = this.Hp;
+        }
+
+        public void SavePlayerStatus()
+        {
+            PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            PlayerStatusModel.Instance.PlayerHp = this.Hp;
         }
 
         void ShootSeed()

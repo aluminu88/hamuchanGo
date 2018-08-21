@@ -29,6 +29,13 @@ namespace Neno.Scripts
             seedsStack.SetSeeds(seedsNum);
         }
 
+        public void ClearStage()
+        {
+            this.player.isPlay = false;
+            this.player.SavePlayerStatus();
+
+        }
+
         // Use this for initialization
         void Awake()
         {
