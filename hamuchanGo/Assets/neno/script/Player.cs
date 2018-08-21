@@ -15,6 +15,17 @@ namespace Neno.Scripts
         /// </summary>
         [SerializeField] private GameObject sheed2Create;
 
+        [SerializeField] private GameObject hamu_throwing_cut;
+
+        [SerializeField] private AudioClip jumpSE;
+
+        [SerializeField] private AudioClip seedthrowSE;
+
+        [SerializeField] private AudioClip seedgetSE;
+
+        [SerializeField] private AudioClip EatingSE;
+
+
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
 
@@ -33,7 +44,9 @@ namespace Neno.Scripts
 
         [SerializeField] private float JumpPower = 5;
 
-        [SerializeField] private Slider slider;
+        [SerializeField] ContactFilter2D filter2d;
+
+        [SerializeField] private GameObject jumpEffect;
 
         public bool isPlay { get; set; }
 
@@ -50,21 +63,6 @@ namespace Neno.Scripts
 
             set
             {
-                //if (seedNum < 10)
-                //{
-                //    if (10 <= seedNum + value)
-                //    {
-                //        seedNum = 10;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-                //    else
-                //    {
-                //        seedNum += value;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-
-                //}
-
                 seedNum = value;
                 if (10 < seedNum)
                 {
@@ -85,11 +83,9 @@ namespace Neno.Scripts
         private Animator animator;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
-            slider.maxValue = hpMax;
-            slider.minValue = 0;
-            slider.value = slider.maxValue;
+
             isPlay = false;
 
             this.playeRigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -100,18 +96,20 @@ namespace Neno.Scripts
             this.Hp = PlayerStatusModel.Instance.PlayerHp;
             this.maxSeedNum = PlayerStatusModel.Instance.MaxSeedNum;
 
+            PlayerStatusModel.Instance.PlayerMaxHp = this.hpMax;
+
             //SceneManager.sceneLoaded += (scene, mode) =>
             //{
             //    this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             //    this.Hp = PlayerStatusModel.Instance.PlayerHp;
-            //    this.maxSeedNum = 
+            //    this.maxSeedNum =
             //};
 
-            SceneManager.sceneUnloaded += scene =>
-            {
-                PlayerStatusModel.Instance.SeedNum = this.SheedNum;
-                PlayerStatusModel.Instance.PlayerHp = this.Hp;
-            };
+            //SceneManager.sceneUnloaded += scene =>
+            //{
+            //    PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            //    PlayerStatusModel.Instance.PlayerHp = this.Hp;
+            //};
         }
 
         void FixedUpdate()
@@ -213,18 +211,30 @@ namespace Neno.Scripts
                 }
             }
 
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGround)
+                var isTouched = this.playeRigidbody.IsTouching(filter2d);
+                if (isTouched)
                 {
                     this.isGround = !this.isGround;
-
+                    Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                    GetComponent<AudioSource>().PlayOneShot(jumpSE);
                 }
-                Debug.Log("Jump!!!");
             }
 
             animator.SetBool("jump", !isGround);
+
+
+
+            if (Input.GetKey(KeyCode.Z) )
+            {
+                hamu_throwing_cut.SetActive(true);
+            }
+            else hamu_throwing_cut.SetActive(false);
+
+            animator.SetBool("stop", isGround && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)));
 
             //球を発射
             if (Input.GetKeyDown(KeyCode.Z))
@@ -252,21 +262,29 @@ namespace Neno.Scripts
                 if (HasSheeds())
                 {
                     this.Hp = this.hpMax;
+                    GetComponent<AudioSource>().PlayOneShot(EatingSE);
                     this.SheedNum--;
                 }
                 else
                 {
                     //gameOver
-                    SceneManager.LoadScene("Result");
+                    stageManager.GameOver();
                 }
             }
-            slider.value = this.Hp;
+            stageManager.ChangeHp(this.Hp);
+        }
+
+        public void SavePlayerStatus()
+        {
+            PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            PlayerStatusModel.Instance.PlayerHp = this.Hp;
         }
 
         void ShootSeed()
         {
             if (this.SheedNum > 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(seedthrowSE);
                 this.SheedNum--;
                 GameObject sheed = Instantiate(this.sheed2Create, this.transform.position, Quaternion.identity);
                 sheed.transform.right = transform.right;
@@ -285,6 +303,7 @@ namespace Neno.Scripts
             {
                 if (this.SheedNum < 10)
                 {
+                    GetComponent<AudioSource>().PlayOneShot(seedgetSE);
                     this.SheedNum += 1;
                     Destroy(col.transform.gameObject);
                 }

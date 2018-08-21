@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class StopSeed : MonoBehaviour
 {
-
-
-    [SerializeField, Tooltip("発射した時のスピード")]
-    float shotVelocity;
-    [SerializeField, Tooltip("発射した時の回転スピード(演出)")]
-    float shotAngularVelocity;
     [SerializeField, Tooltip("種が床に当たった時に生成するめ")]
     GameObject sprout;
 
-    // Use this for initialization
+    bool dead;
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -27,6 +20,7 @@ public class StopSeed : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (dead) { return; }
         if (collision.gameObject.tag == "Ground")
         {
             InstSprout(collision);
@@ -51,7 +45,6 @@ public class StopSeed : MonoBehaviour
         if (135f <= Mathf.Abs(radius))//絶対値が135度以上なら床に当たっているとする
         {
             var instSprout = Instantiate(sprout, contactPoint, Quaternion.identity);
-            Destroy(gameObject);
         }
         else
         {
@@ -65,7 +58,8 @@ public class StopSeed : MonoBehaviour
             {
                 instSprout.transform.Rotate(0, 0, -WallInstAngle);
             }
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
+
     }
 }

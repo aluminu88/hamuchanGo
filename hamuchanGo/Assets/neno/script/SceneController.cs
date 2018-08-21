@@ -13,12 +13,17 @@ namespace Neno.Scripts
 
         public void GotoNextScene()
         {
-            SceneManager.LoadScene(nextScene);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 
         public void GotoTitleScene()
         {
             SceneManager.LoadScene(this.tile);
+        }
+
+        public void GotoResultScene()
+        {
+            SceneManager.LoadScene("Result");
         }
 
         // Use this for initialization
