@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class HowTocontroller : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip buttonSE;
 
     // Use this for initialization
     void Start()
@@ -20,6 +22,7 @@ public class HowTocontroller : MonoBehaviour
 
     public void OnClickStartButton()
     {
+        GetComponent<AudioSource>().PlayOneShot(buttonSE);
         SceneManager.LoadScene("Title");
     }
 }

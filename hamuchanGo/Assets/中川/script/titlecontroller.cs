@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class titlecontroller : MonoBehaviour {
 
+    [SerializeField]
+    private AudioClip buttonSE;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -17,11 +20,13 @@ public class titlecontroller : MonoBehaviour {
 
     public void OnClickStartButton()
     {
+        GetComponent<AudioSource>().PlayOneShot(buttonSE);
         SceneManager.LoadScene("easy1");
     }
 
     public void OnClickQuitButton()
     {
+        GetComponent<AudioSource>().PlayOneShot(buttonSE);
         Application.Quit();
     }
 }

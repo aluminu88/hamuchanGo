@@ -11,18 +11,24 @@ namespace Neno.Scripts
         [SerializeField] private string nextScene;
         private string tile = "Title";
 
+        [SerializeField] private AudioClip buttonSE;
+
+
         public void GotoNextScene()
         {
+            GetComponent<AudioSource>().PlayOneShot(buttonSE);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 
         public void GotoTitleScene()
         {
+            GetComponent<AudioSource>().PlayOneShot(buttonSE);
             SceneManager.LoadScene(this.tile);
         }
 
         public void GotoResultScene()
         {
+            GetComponent<AudioSource>().PlayOneShot(buttonSE);
             SceneManager.LoadScene("Result");
         }
 
