@@ -14,9 +14,15 @@ namespace Naka
         [SerializeField]
         int hp = 10;
         [SerializeField]
+        float enemyInstCycle = 3;
+        [SerializeField]
+        float sumiInstCycle = 3;
+        [SerializeField]
         Transform leftHand;
         [SerializeField]
         GameObject normalIka;
+        [SerializeField]
+        GameObject ikaSumi;
         [SerializeField, Tooltip("ハムちゃんにダメージを与えたときのエフェクト")]
         GameObject steelParticle;
         [SerializeField]
@@ -32,11 +38,13 @@ namespace Naka
         public bool IsPlaying;
         Vector2 firstLeftHandLocalPos;
         Anima2D.SpriteMesh normalMesh;
+        Animator animator;
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
             firstLeftHandLocalPos = leftHand.localPosition;
             normalMesh = spriteMeshInstance.spriteMesh;
+            animator = GetComponent<Animator>();
         }
 
         public void LeftHandTriggerEnter(Collider2D collision)
@@ -70,6 +78,7 @@ namespace Naka
 
         IEnumerator DeadCoroutine()
         {
+            animator.SetTrigger("Dead");
             spriteMeshInstance.spriteMesh = damagedMesh;
             spriteMeshInstance.color = damagedColor;
             IsPlaying = false;
@@ -77,8 +86,11 @@ namespace Naka
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        bool damagedCorutineRunning;
         IEnumerator DamagedCoroutine()
         {
+            if (damagedCorutineRunning) { yield break; }
+            damagedCorutineRunning = true;
             spriteMeshInstance.spriteMesh = damagedMesh;
             Color firstColor = spriteMeshInstance.color;
             spriteMeshInstance.color = damagedColor;
@@ -86,12 +98,39 @@ namespace Naka
             yield return new WaitForSeconds(DamageMeshTime);
             spriteMeshInstance.spriteMesh = normalMesh;
             spriteMeshInstance.color = firstColor;
+            damagedCorutineRunning = false;
         }
 
         void Update()
         {
             if (!IsPlaying) { return; }
+            InstEnemy();
+            InstSumi();
+        }
 
+        float enemyTimer = 0;
+        void InstEnemy()
+        {
+            enemyTimer += Time.deltaTime;
+            if (enemyInstCycle <= enemyTimer)
+            {
+                enemyTimer = 0f;
+                Instantiate(normalIka, transform.position, normalIka.transform.rotation);
+            }
+        }
+
+        float sumiTimer = 0;
+        void InstSumi()
+        {
+            sumiTimer += Time.deltaTime;
+            if (enemyInstCycle <= sumiTimer)
+            {
+                sumiTimer = 0f;
+                Instantiate(ikaSumi, transform.position, ikaSumi.transform.rotation);
+            }
+        }
+        void HandMove()
+        {
             //ダメージを受けて一定以内なら腕を戻す
             if (0 < damagedTimer)
             {
@@ -100,8 +139,8 @@ namespace Naka
                 vec.Normalize();
                 leftHand.right = vec;
                 leftHand.transform.Translate(-vec * handSpeed * Time.deltaTime, Space.World);
-                if(firstLeftHandLocalPos.x < leftHand.localPosition.x)//初期位置より右にはいかない
-                if (damagedTimer <= 0) { damagedTimer = 0;}
+                if (leftHand.localPosition.x < firstLeftHandLocalPos.x) { damagedTimer = 0f; }//初期位置より右にはいかない
+                if (damagedTimer <= 0) { damagedTimer = 0; }
             }
             else//それ以外なら腕を進める
             {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: character_fish_ika 1
   m_EditorClassIdentifier: 
   m_ApiVersion: 4
-  m_Sprite: {fileID: 21300000, guid: 0b42b9561d12c3a4a984d7fa00bee41e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af011d45fe7b7264ca4b5fbfa1441cc4, type: 3}
   m_SharedMesh: {fileID: 43197713197852372}
   pivotPoint: {x: 0, y: 0}
   texVertices: []
