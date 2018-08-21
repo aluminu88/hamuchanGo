@@ -76,6 +76,12 @@ namespace Naka
             }
         }
 
+        [ContextMenu("Kill")]
+        void Kill()
+        {
+            StartCoroutine(DeadCoroutine());
+        }
+
         IEnumerator DeadCoroutine()
         {
             animator.SetTrigger("Dead");

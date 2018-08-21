@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: "Assets/\u4E2D\u5DDD/scenes/HowTo.unity"
     guid: 7321ff981a98757438dfe5a35220c248
   - enabled: 1
-    path: "Assets/\u4E2D\u5DDD/scenes/Result.unity"
-    guid: 9ad578ce78c008743b2dbb3effa12354
-  - enabled: 1
     path: Assets/ReleaseScene/easy1.unity
     guid: e30f9cc02338876409f4f126114db61a
   - enabled: 1
@@ -38,3 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ReleaseScene/IkaBoss.unity
     guid: 1cba43e7a2da8a14baec2d0e21d23e7e
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/Result.unity"
+    guid: 9ad578ce78c008743b2dbb3effa12354
