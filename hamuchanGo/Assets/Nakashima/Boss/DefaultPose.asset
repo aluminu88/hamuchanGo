@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: DefaultPose
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: LeftSholder
+    localPosition: {x: 0, y: -0.18919826, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9935552, w: 0.11334992}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LeftSholder/LeftArm
+    localPosition: {x: 0.25000006, y: 0.000000010593794, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.31319678, w: 0.9496883}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: LeftSholder/LeftArm/Lefthand
+    localPosition: {x: 0.14999995, y: -0.000000016763806, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.40909153, w: 0.9124934}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Crotch
+    localPosition: {x: 0, y: -0.18919826, z: 0}
+    localRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Crotch/LeftFoot
+    localPosition: {x: 0.22000006, y: 0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.4261572, w: 0.9046491}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Crotch/RightFoot
+    localPosition: {x: 0.22000018, y: 0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.48202497, w: 0.8761575}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: RightSholder
+    localPosition: {x: 0, y: -0.18919826, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.11940698, w: -0.9928454}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: RightSholder/RightArm
+    localPosition: {x: 0.25000006, y: 0.000000010593794, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.3060289, w: 0.95202225}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: RightSholder/RightArm/RightHand
+    localPosition: {x: 0.14999995, y: -0.000000016763806, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.4180139, w: 0.90844065}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bpdy
+    localPosition: {x: 0, y: -0.18919826, z: 0}
+    localRotation: {x: -0, y: -0, z: -0.7071068, w: -0.7071068}
+    localScale: {x: 1.0000005, y: 1.0000005, z: 1}
+  - path: Bpdy/Head
+    localPosition: {x: 0.25000006, y: 0.000000010593794, z: 0}
+    localRotation: {x: 0, y: 0, z: 0, w: 1}
+    localScale: {x: 1, y: 1, z: 1}
