@@ -1307,6 +1307,26 @@ Prefab:
       propertyPath: slider
       value: 
       objectReference: {fileID: 988017137}
+    - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
+        type: 2}
+      propertyPath: filter2d.useNormalAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
+        type: 2}
+      propertyPath: filter2d.minNormalAngle
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
+        type: 2}
+      propertyPath: filter2d.maxNormalAngle
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 50560040786169460, guid: c17283d504e487648bdc6f432235eb62,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 68042e663de8a43449ce24a8abefc928, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c17283d504e487648bdc6f432235eb62, type: 2}
   m_IsPrefabParent: 0

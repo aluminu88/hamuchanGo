@@ -37,6 +37,8 @@ namespace Neno.Scripts
 
         [SerializeField] private Slider slider;
 
+        [SerializeField] ContactFilter2D filter2d;
+
         public bool isPlay { get; set; }
 
         private Rigidbody2D playeRigidbody;
@@ -52,21 +54,6 @@ namespace Neno.Scripts
 
             set
             {
-                //if (seedNum < 10)
-                //{
-                //    if (10 <= seedNum + value)
-                //    {
-                //        seedNum = 10;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-                //    else
-                //    {
-                //        seedNum += value;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-
-                //}
-
                 seedNum = value;
                 if (10 < seedNum)
                 {
@@ -157,20 +144,22 @@ namespace Neno.Scripts
                 }
             }
 
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGround)
+                var isTouched = this.playeRigidbody.IsTouching(filter2d);
+                if (isTouched)
                 {
                     this.isGround = !this.isGround;
-
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
                 }
-                Debug.Log("Jump!!!");
             }
 
             animator.SetBool("jump", !isGround);
 
-            if (Input.GetKey(KeyCode.Z))
+
+
+            if (Input.GetKey(KeyCode.Z) )
             {
                 hamu_throwing_cut.SetActive(true);
             }
@@ -208,7 +197,7 @@ namespace Neno.Scripts
                 else
                 {
                     //gameOver
-                    SceneManager.LoadScene("Result");
+                    stageManager.GameOver();
                 }
             }
             slider.value = this.Hp;
