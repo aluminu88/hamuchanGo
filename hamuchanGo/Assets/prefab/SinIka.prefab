@@ -107,7 +107,7 @@ MonoBehaviour:
     type: 2}
   speed: 1
   amplitude: 1
-  waveLength: 1
+  waveLength: 0.5
 --- !u!212 &212734710840096580
 SpriteRenderer:
   m_ObjectHideFlags: 1
