@@ -60,6 +60,10 @@ namespace Naka
         /// </summary>
         void UpdateSeedSprite()
         {
+            if (uiImages == null)
+            {
+                return;
+            }
             for (int i = 0; i < uiImages.Length; i++)
             {
                 if (i + 1 <= seedNum)

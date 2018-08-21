@@ -29,6 +29,26 @@ namespace Neno.Scripts
             seedsStack.SetSeeds(seedsNum);
         }
 
+        public void ClearStage()
+        {
+            this.player.isPlay = false;
+            this.player.SavePlayerStatus();
+            //uiがシュっと出てきます。
+            RectTransform panelTransform = uiCanvas.transform.Find("Panel") as RectTransform;
+            Animator panelAnimator = panelTransform.GetComponent<Animator>();
+            panelAnimator.SetTrigger("StageClear");
+
+            TimerUI timerUI = uiCanvas.transform.Find("Timer").GetComponent<TimerUI>();
+            timerUI.PlayerGoal();
+        }
+
+        public void GameOver()
+        {
+            RectTransform panelTransform = uiCanvas.transform.Find("Panel") as RectTransform;
+            Animator uiAnimator = panelTransform.GetComponent<Animator>();
+            uiAnimator.SetTrigger("StageClear");
+        }
+
         // Use this for initialization
         void Awake()
         {

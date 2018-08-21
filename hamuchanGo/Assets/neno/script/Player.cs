@@ -15,6 +15,8 @@ namespace Neno.Scripts
         /// </summary>
         [SerializeField] private GameObject sheed2Create;
 
+        [SerializeField] private GameObject hamu_throwing_cut;
+
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
 
@@ -35,6 +37,8 @@ namespace Neno.Scripts
 
         [SerializeField] private Slider slider;
 
+        [SerializeField] ContactFilter2D filter2d;
+
         public bool isPlay { get; set; }
 
         private Rigidbody2D playeRigidbody;
@@ -50,21 +54,6 @@ namespace Neno.Scripts
 
             set
             {
-                //if (seedNum < 10)
-                //{
-                //    if (10 <= seedNum + value)
-                //    {
-                //        seedNum = 10;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-                //    else
-                //    {
-                //        seedNum += value;
-                //        stageManager.ChangePlayersSeeds(seedNum);
-                //    }
-
-                //}
-
                 seedNum = value;
                 if (10 < seedNum)
                 {
@@ -99,19 +88,19 @@ namespace Neno.Scripts
             this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             this.Hp = PlayerStatusModel.Instance.PlayerHp;
             this.maxSeedNum = PlayerStatusModel.Instance.MaxSeedNum;
-            
+
             //SceneManager.sceneLoaded += (scene, mode) =>
             //{
             //    this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             //    this.Hp = PlayerStatusModel.Instance.PlayerHp;
-            //    this.maxSeedNum = 
+            //    this.maxSeedNum =
             //};
 
-            SceneManager.sceneUnloaded += scene =>
-            {
-                PlayerStatusModel.Instance.SeedNum = this.SheedNum;
-                PlayerStatusModel.Instance.PlayerHp = this.Hp;
-            };
+            //SceneManager.sceneUnloaded += scene =>
+            //{
+            //    PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            //    PlayerStatusModel.Instance.PlayerHp = this.Hp;
+            //};
         }
         
         void FixedUpdate()
@@ -155,18 +144,28 @@ namespace Neno.Scripts
                 }
             }
 
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGround)
+                var isTouched = this.playeRigidbody.IsTouching(filter2d);
+                if (isTouched)
                 {
                     this.isGround = !this.isGround;
-
                     this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
                 }
-                Debug.Log("Jump!!!");
             }
 
             animator.SetBool("jump", !isGround);
+
+
+
+            if (Input.GetKey(KeyCode.Z) )
+            {
+                hamu_throwing_cut.SetActive(true);
+            }
+            else hamu_throwing_cut.SetActive(false);
+
+            animator.SetBool("stop", isGround && !(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)));
 
             //球を発射
             if (Input.GetKeyDown(KeyCode.Z))
@@ -198,10 +197,16 @@ namespace Neno.Scripts
                 else
                 {
                     //gameOver
-                    SceneManager.LoadScene("Result");
+                    stageManager.GameOver();
                 }
             }
             slider.value = this.Hp;
+        }
+
+        public void SavePlayerStatus()
+        {
+            PlayerStatusModel.Instance.SeedNum = this.SheedNum;
+            PlayerStatusModel.Instance.PlayerHp = this.Hp;
         }
 
         void ShootSeed()

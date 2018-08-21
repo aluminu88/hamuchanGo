@@ -19,4 +19,9 @@ public class titlecontroller : MonoBehaviour {
     {
         SceneManager.LoadScene("stage1_neno_experiment");
     }
+
+    public void OnClickQuitButton()
+    {
+        Application.Quit();
+    }
 }

@@ -574,11 +574,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4411902905272644, guid: e82e47124ba7e034582c4728f614e9dc,
     type: 2}
   m_PrefabInternal: {fileID: 179289343}
---- !u!95 &186720556 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95780232946290374, guid: 909509fdefbb76843974ae0491761b1d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1844985838}
 --- !u!1001 &208051423
 Prefab:
   m_ObjectHideFlags: 0
@@ -1860,7 +1855,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4945069692812158, guid: c17283d504e487648bdc6f432235eb62, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.56
+      value: -3.44
       objectReference: {fileID: 0}
     - target: {fileID: 4945069692812158, guid: c17283d504e487648bdc6f432235eb62, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1888,18 +1883,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
         type: 2}
-      propertyPath: stageManager
-      value: 
-      objectReference: {fileID: 812648532}
-    - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
-        type: 2}
       propertyPath: slider
       value: 
       objectReference: {fileID: 1526806840}
-    - target: {fileID: 1143034551662696, guid: c17283d504e487648bdc6f432235eb62, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114714174910297536, guid: c17283d504e487648bdc6f432235eb62,
+        type: 2}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 812648532}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c17283d504e487648bdc6f432235eb62, type: 2}
   m_IsPrefabParent: 0
@@ -2110,12 +2101,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4411902905272644, guid: e82e47124ba7e034582c4728f614e9dc,
     type: 2}
   m_PrefabInternal: {fileID: 609292546}
---- !u!114 &616340183 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114219430841314610, guid: 909509fdefbb76843974ae0491761b1d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1844985838}
-  m_Script: {fileID: 11500000, guid: 7a5505c90d4eed043881ddcd3d8efe55, type: 3}
 --- !u!1 &626224018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,21 +4143,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114008638521703660, guid: 2cf39008934110648bb6acf12d0e8976,
-        type: 2}
-      propertyPath: uiAnimator
-      value: 
-      objectReference: {fileID: 186720556}
-    - target: {fileID: 114008638521703660, guid: 2cf39008934110648bb6acf12d0e8976,
-        type: 2}
-      propertyPath: timerUI
-      value: 
-      objectReference: {fileID: 616340183}
-    - target: {fileID: 61407555247989162, guid: 2cf39008934110648bb6acf12d0e8976,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cf39008934110648bb6acf12d0e8976, type: 2}
   m_IsPrefabParent: 0
@@ -4479,6 +4449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1297574744}
   - component: {fileID: 1297574746}
+  - component: {fileID: 1297574745}
   m_Layer: 0
   m_Name: ground2
   m_TagString: Untagged
@@ -4515,6 +4486,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!66 &1297574745
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1297574743}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
 --- !u!50 &1297574746
 Rigidbody2D:
   serializedVersion: 4
