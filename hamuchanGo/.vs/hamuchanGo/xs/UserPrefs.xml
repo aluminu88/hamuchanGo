@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{FC1A2141-6D1D-5CF0-F260-7408068C5994}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/neno/script/Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/neno/script/Goal.cs">
     <Files>
-      <File FileName="Assets/neno/script/Player.cs" Line="90" Column="1" />
+      <File FileName="Assets/neno/script/Player.cs" Line="181" Column="10" />
+      <File FileName="Assets/neno/script/Goal.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
