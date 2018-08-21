@@ -390,7 +390,7 @@ Prefab:
     - target: {fileID: 114513409195130428, guid: 817ef596031282c44803c281b3fa3dfe,
         type: 2}
       propertyPath: cycleTime
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114513409195130428, guid: 817ef596031282c44803c281b3fa3dfe,
         type: 2}

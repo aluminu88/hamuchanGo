@@ -20,3 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/neno/scene/stage2_neno_experiment.unity
     guid: 74b73ab8e9aa51d45999123ce93c752b
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/hard2.unity"
+    guid: b1b8b6c36cd8bad4a8b2ca9015c87f04
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/easy1.unity"
+    guid: e30f9cc02338876409f4f126114db61a
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/easy2.unity"
+    guid: 3b3cb87ff504ef645bf7b7790722f958
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/easy3.unity"
+    guid: 713c596b20f6b8b438459bd4df871cb7
+  - enabled: 1
+    path: "Assets/\u4E2D\u5DDD/scenes/hard1.unity"
+    guid: 75998489eddd97345a5b7258316dacd4

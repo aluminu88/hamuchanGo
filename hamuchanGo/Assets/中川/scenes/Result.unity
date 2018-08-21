@@ -1007,6 +1007,68 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224902690582107854, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 224902690582107854, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141639643171736, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141639643171736, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141639643171736, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141639643171736, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114141639643171736, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 1e1137e7814964a42a4afaa8b398b23d,
+        type: 3}
+    - target: {fileID: 114091117237873372, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 1e1137e7814964a42a4afaa8b398b23d,
+        type: 3}
+    - target: {fileID: 114091117237873372, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091117237873372, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 224592706885454270, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 138
+      objectReference: {fileID: 0}
+    - target: {fileID: 224592706885454270, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6edc916bd299a3c48b1ea5c58ec7c8ae, type: 2}
   m_IsPrefabParent: 0
@@ -1200,8 +1262,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 193115005}
   m_HandleRect: {fileID: 193115004}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
