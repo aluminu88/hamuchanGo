@@ -3961,7 +3961,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1829444957}
-  - component: {fileID: 1829444960}
+  - component: {fileID: 1829444959}
   - component: {fileID: 1829444958}
   m_Layer: 13
   m_Name: character_fish_ika
@@ -4037,10 +4037,10 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 1017726504}
   m_AABB:
-    m_Center: {x: -0.034347773, y: -0.12080383, z: 0}
-    m_Extent: {x: 0.78930616, y: 0.78872776, z: 0}
+    m_Center: {x: 0.02618429, y: -0.113582134, z: 0}
+    m_Extent: {x: 0.69660914, y: 0.7784016, z: 0}
   m_DirtyAABB: 0
---- !u!114 &1829444960
+--- !u!114 &1829444959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4215,7 +4215,7 @@ MonoBehaviour:
   steelParticle: {fileID: 1585687531198990, guid: 12328926e92d5ad478047069b64f0ad7,
     type: 2}
   damagedColor: {r: 1, g: 0.31617647, b: 0.31617647, a: 1}
-  spriteMeshInstance: {fileID: 1829444960}
+  spriteMeshInstance: {fileID: 1829444959}
   damagedMesh: {fileID: 11400000, guid: 89f98243c6dc04b44a2422fefaca4122, type: 2}
   IsPlaying: 1
 --- !u!50 &1854668183
