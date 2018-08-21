@@ -17,6 +17,7 @@ namespace Neno.Scripts
             MaxSeedNum = 10;
             SeedNum = 6;
             PlayerHp = 1000;
+            PlayerMaxHp = 1000;
         }
 
         public void SetMaxSeedNum(int maxNum)
