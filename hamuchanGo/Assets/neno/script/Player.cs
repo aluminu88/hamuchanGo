@@ -28,6 +28,8 @@ namespace Neno.Scripts
 
         [SerializeField] private AudioClip DamagedSE;
 
+        [SerializeField] private AudioClip GameOverSE;
+
 
         //[SerializeField] private int SheedMaxNum = 10;
         private int SheedMaxNum = 10;
@@ -298,6 +300,9 @@ namespace Neno.Scripts
                 else
                 {
                     //gameOver
+                    GetComponent<AudioSource>().PlayOneShot(GameOverSE);
+                    Camera.main.GetComponent<AudioSource>().Stop();
+                    animator.SetTrigger("GameOver");
                     stageManager.GameOver();
                 }
             }
