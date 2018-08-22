@@ -32,6 +32,15 @@ namespace Naka
         [SerializeField]
         Anima2D.SpriteMesh damagedMesh;
 
+        [SerializeField, Tooltip("ダメージ受けた時の音")]
+        private AudioClip Ika_damageSE;
+
+        [SerializeField, Tooltip("ヤラレタ時の音")]
+        private AudioClip Ika_deadSE;
+
+        [SerializeField, Tooltip("ハムちゃんをふっとばすパワー")]
+        private float power = 8;
+
 
         Transform player;
         float damagedTimer = 0;
@@ -68,10 +77,14 @@ namespace Naka
             print("headHit");
             if (collision.tag == "Seed")
             {
+                GetComponent<AudioSource>().PlayOneShot(Ika_damageSE);
                 const int Damage = 1;
                 hp -= Damage;
                 Destroy(collision.gameObject);
-                if (hp <= 0) { StartCoroutine(DeadCoroutine());return; }
+                if (hp <= 0) {
+                    GetComponent<AudioSource>().PlayOneShot(Ika_deadSE);
+                    StartCoroutine(DeadCoroutine());return;
+                }
                 StartCoroutine(DamagedCoroutine());
             }
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Neno.Scripts
 {
@@ -24,6 +24,8 @@ namespace Neno.Scripts
         [SerializeField] private AudioClip seedgetSE;
 
         [SerializeField] private AudioClip EatingSE;
+
+        [SerializeField] private AudioClip DamagedSE;
 
 
         //[SerializeField] private int SheedMaxNum = 10;
@@ -95,6 +97,7 @@ namespace Neno.Scripts
             this.SheedNum = PlayerStatusModel.Instance.SeedNum;
             this.Hp = PlayerStatusModel.Instance.PlayerHp;
             this.maxSeedNum = PlayerStatusModel.Instance.MaxSeedNum;
+
             PlayerStatusModel.Instance.PlayerMaxHp = this.hpMax;
 
             //SceneManager.sceneLoaded += (scene, mode) =>
@@ -110,9 +113,83 @@ namespace Neno.Scripts
             //    PlayerStatusModel.Instance.PlayerHp = this.Hp;
             //};
         }
-        
+
+        /// <summary>
+        /// iosとandroidの両方に対応している操作に関する関数。
+        /// </summary>
+        void MobileControl(){
+            if (!this.isPlay)
+            {
+                return;
+            }
+
+            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+
+            var jumpVelocity = new Vector3(0, JumpPower, 0);
+            if (0.1f < Mathf.Abs(horizontal))
+            {
+                horizontal /= 10;
+                float jumpVelocityHorizontal = horizontal * 5;
+
+                jumpVelocity.x = jumpVelocityHorizontal;
+
+                Vector3 addPos = new Vector3(horizontal, 0f, 0f);
+
+                if (isGround)
+                {
+                    this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(horizontal, 0, 0);
+
+                    this.playeRigidbody.transform.right = new Vector3(horizontal, 0, 0);
+                }
+                else
+                {
+                    if (0 < horizontal)
+                    {
+                        if (playeRigidbody.velocity.x < 10)
+                        {
+                            this.playeRigidbody.velocity += new Vector2(0.2f, 0);
+                        }
+                    }
+                    else if (0 > horizontal)
+                    {
+                        if (-10 < playeRigidbody.velocity.x)
+                        {
+                            this.playeRigidbody.velocity += new Vector2(-0.2f, 0);
+                        }
+                    }
+                }
+            }
+
+
+            if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            {
+                if (isGround)
+                {
+                    this.isGround = !this.isGround;
+
+                    this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                }
+            }
+
+
+            animator.SetBool("jump", !isGround);
+
+            //球を発射
+            if (CrossPlatformInputManager.GetButtonDown("Attack"))
+            {
+                ShootSeed();
+            }
+
+        }
+
         void FixedUpdate()
         {
+#if UNITY_IOS
+            MobileControl();
+#elif UNITY_ANDROID
+            MobileControl();
+#else
+
             if (!this.isPlay)
             {
                 return;
@@ -182,6 +259,7 @@ namespace Neno.Scripts
             {
                 ShootSeed();
             }
+#endif
         }
 
         bool HasSheeds()
@@ -249,5 +327,14 @@ namespace Neno.Scripts
                 }
             }
         }
+
+        public void damade(float damagepower,Transform enemytransform)
+        {
+            animator.SetTrigger("damaged");
+            GetComponent<AudioSource>().PlayOneShot(DamagedSE);
+            var damagevector = (this.transform.position - enemytransform.position).normalized;
+            this.playeRigidbody.AddForce(damagevector * damagepower, ForceMode2D.Impulse);
+        }
+
     }
 }

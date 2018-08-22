@@ -17,6 +17,11 @@ namespace Neno.Scripts
         private SeedsStack seedsStack;
         private Slider hpSlider;
 
+        /// <summary>
+        /// それぞれのステージが終わる、もしくはゲームオーバーするとたつフラグ
+        /// </summary>
+        private bool stageEnd = false;
+
         public void NotifyEndCountdown()
         {
             this.player.isPlay = true;
@@ -33,15 +38,19 @@ namespace Neno.Scripts
 
         public void ClearStage()
         {
-            this.player.isPlay = false;
-            this.player.SavePlayerStatus();
-            //uiがシュっと出てきます。
-            RectTransform panelTransform = uiCanvas.transform.Find("GameClearPanel") as RectTransform;
-            Animator panelAnimator = panelTransform.GetComponent<Animator>();
-            panelAnimator.SetTrigger("StageClear");
-            TimerUI timerUI = uiCanvas.transform.Find("Timer").GetComponent<TimerUI>();
-            timerUI.PlayerGoal();
-            panelTransform.Find("Score").GetComponent<Text>().text = "すこあ : " + timerUI.sroceString;
+            if(!stageEnd){
+                stageEnd = true;
+                this.player.isPlay = false;
+                this.player.SavePlayerStatus();
+                //uiがシュっと出てきます。
+                RectTransform panelTransform = uiCanvas.transform.Find("GameClearPanel") as RectTransform;
+                Animator panelAnimator = panelTransform.GetComponent<Animator>();
+                panelAnimator.SetTrigger("StageClear");
+                TimerUI timerUI = uiCanvas.transform.Find("Timer").GetComponent<TimerUI>();
+                timerUI.PlayerGoal();
+                panelTransform.Find("Score").GetComponent<Text>().text = "すこあ : " + timerUI.sroceString;
+            }
+
         }
 
         public void ChangeHp(float hp)
@@ -51,9 +60,12 @@ namespace Neno.Scripts
 
         public void GameOver()
         {
-            RectTransform panelTransform = uiCanvas.transform.Find("GameOverPanel") as RectTransform;
-            Animator uiAnimator = panelTransform.GetComponent<Animator>();
-            uiAnimator.SetTrigger("StageClear");
+            if(!stageEnd){
+                stageEnd = true;
+                RectTransform panelTransform = uiCanvas.transform.Find("GameOverPanel") as RectTransform;
+                Animator uiAnimator = panelTransform.GetComponent<Animator>();
+                uiAnimator.SetTrigger("StageClear");    
+            }
         }
 
         // Use this for initialization
