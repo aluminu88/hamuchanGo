@@ -147,6 +147,7 @@ namespace Neno.Scripts
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(horizontal, 0, 0);
 
                     this.playeRigidbody.transform.right = new Vector3(horizontal, 0, 0);
+                    animator.SetBool("stop", isTouched);
                 }
                 else
                 {
@@ -162,6 +163,7 @@ namespace Neno.Scripts
                         if (-10 < playeRigidbody.velocity.x)
                         {
                             this.playeRigidbody.velocity += new Vector2(-0.2f, 0);
+
                         }
                     }
                 }
@@ -174,10 +176,12 @@ namespace Neno.Scripts
             {
                 if (isTouched)
                 {
-                    this.isGround = !this.isGround;
-                    Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
-                    this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
-                    GetComponent<AudioSource>().PlayOneShot(jumpSE);
+                    if(isGround){
+                        this.isGround = false;
+                        Instantiate(jumpEffect, (Vector2)transform.position - 0.7f * Vector2.up, jumpEffect.transform.rotation);
+                        this.playeRigidbody.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                        GetComponent<AudioSource>().PlayOneShot(jumpSE);
+                    }
                 }
             }
 
