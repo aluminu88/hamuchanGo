@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounciness: 5
-  TrampolineSE: {fileID: 0}
+  TrampolineSE: {fileID: 8300000, guid: c900c2f85be3d66489e46ac3e86c2c3c, type: 3}
 --- !u!212 &212049219755168428
 SpriteRenderer:
   m_ObjectHideFlags: 1

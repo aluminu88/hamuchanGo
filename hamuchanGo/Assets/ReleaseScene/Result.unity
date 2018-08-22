@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cae4ef7c8be2074f8d578a89ef4d2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSE: {fileID: 8300000, guid: d55139e239f3db74d995002434504341, type: 3}
 --- !u!1 &503071612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,8 +1630,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 193115005}
   m_HandleRect: {fileID: 193115004}
   m_Direction: 2
-  m_Value: 0.75
-  m_Size: 0.9999998
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
