@@ -10,6 +10,9 @@ namespace Naka
         int addSeedNum;
         [SerializeField]
         Sprite seedGotSprite;
+        [SerializeField]
+        AudioClip getSound;
+
         bool seedWasGot;//タネを取得した後か
 
         [SerializeField]
@@ -17,7 +20,11 @@ namespace Naka
 
         void Start()
         {
-            GetComponent<AudioSource>().PlayOneShot(bloomingSE);
+        }
+
+        void OnEnable()
+        {
+            transform.parent.parent.GetComponent<AudioSource>().PlayOneShot(bloomingSE);
         }
 
         void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +34,7 @@ namespace Naka
                 print("FlowerHit");
                 GetComponent<SpriteRenderer>().sprite = seedGotSprite;
                 var player = collision.GetComponent<Neno.Scripts.Player>();
+                transform.parent.parent.GetComponent<AudioSource>().PlayOneShot(getSound);
                 if (!player)//一応チェック
                 {
                     Debug.LogWarning("Playerタグはあるがスクリプトが取得できません");
