@@ -147,7 +147,7 @@ namespace Neno.Scripts
                     this.playeRigidbody.transform.position = this.playeRigidbody.transform.position + new Vector3(horizontal, 0, 0);
 
                     this.playeRigidbody.transform.right = new Vector3(horizontal, 0, 0);
-                    animator.SetBool("stop", isTouched);
+                    animator.SetBool("stop", false);
                 }
                 else
                 {
