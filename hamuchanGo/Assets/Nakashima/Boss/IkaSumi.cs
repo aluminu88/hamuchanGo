@@ -39,7 +39,9 @@ namespace Naka
         {
             if (collision.tag == "Player")
             {
-                collision.GetComponent<Neno.Scripts.Player>().SheedNum -= steelSeedNum;
+                var player = collision.GetComponent<Neno.Scripts.Player>();
+                player.SheedNum -= steelSeedNum;
+                player.damade(8,transform);
                 var pos = collision.transform.position;
                 Instantiate(steelParticle, pos, Quaternion.identity);
                 if (hitDestroy)
