@@ -42,3 +42,7 @@ Thumbs.db
 sysinfo.txt #Unity3D Generated File On Crash Reports
 
 hamchanGo/.vs/
+.git/objects/pack/pack-3785d9862c6eada991d88cf9883a41528c8e96f1.pack
+.git/objects/pack/pack-7485c8d8ff0894f7c3870ac4defb3a926dc8b837.pack
+hamuchanGo/hamuchanGo/Libraries/libiPhone-lib.a
+hamuchanGo/ios_test/Libraries/libiPhone-lib.a
