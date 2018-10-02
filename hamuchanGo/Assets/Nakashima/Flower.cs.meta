@@ -7,6 +7,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - seedGotSprite: {instanceID: 0}
+  - getSound: {instanceID: 0}
   - bloomingSE: {fileID: 8300000, guid: d55139e239f3db74d995002434504341, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

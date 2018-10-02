@@ -15,6 +15,8 @@ namespace Naka
 
         bool seedWasGot;//タネを取得した後か
 
+        bool flag = false;
+
         [SerializeField]
         private AudioClip bloomingSE;
 
@@ -24,7 +26,9 @@ namespace Naka
 
         void OnEnable()
         {
-            transform.parent.parent.GetComponent<AudioSource>().PlayOneShot(bloomingSE);
+            if (flag)
+                transform.parent.parent.GetComponent<AudioSource>().PlayOneShot(bloomingSE);
+            else flag = true;
         }
 
         void OnTriggerEnter2D(Collider2D collision)

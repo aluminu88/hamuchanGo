@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 5c9f26bf93b13684a9a682208f9acf17
-timeCreated: 1534472271
+guid: cbc01e3039223cb4f9ccac562dceb50f
+timeCreated: 1538499954
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - childLeef: {instanceID: 0}
-  - sproutSE: {fileID: 8300000, guid: 24c059d5598df794c966876001cb7f07, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

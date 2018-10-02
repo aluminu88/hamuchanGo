@@ -87,6 +87,8 @@ namespace Neno.Scripts
 
         private Animator animator;
 
+        private bool gameovered = false;
+
         // Use this for initialization
         void Awake()
         {
@@ -304,7 +306,14 @@ namespace Neno.Scripts
                 else
                 {
                     //gameOver
-                    GetComponent<AudioSource>().PlayOneShot(GameOverSE);
+
+                    //一度だけ鳴らす
+                    if (!gameovered)
+                    {
+                        GetComponent<AudioSource>().PlayOneShot(GameOverSE);
+                        gameovered = true;
+                    }
+
                     Camera.main.GetComponent<AudioSource>().Stop();
                     animator.SetTrigger("GameOver");
                     stageManager.GameOver();
